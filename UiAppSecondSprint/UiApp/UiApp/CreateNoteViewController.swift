@@ -23,6 +23,12 @@ class CreateNoteViewController: UIViewController {
         textView.backgroundColor = #colorLiteral(red: 0.9589001536, green: 0.9590606093, blue: 0.9588790536, alpha: 1)
         view.addSubview(textView)
         
+        
+        let backButton = UIBarButtonItem()
+        backButton.title = "Назад"
+        self.navigationController?.navigationBar.topItem?.backBarButtonItem = backButton
+        
+        
         let save = UIBarButtonItem(title: "Сохранить", style: .done, target: self, action: #selector(saveButtonPressed))
         navigationItem.rightBarButtonItem = save
         // Do any additional setup after loading the view.
