@@ -28,6 +28,7 @@ class RootViewController: UIViewController {
     
     func showLoginScreen() {
         let new = UINavigationController(rootViewController: LoginViewController())
+        new.modalPresentationStyle = .fullScreen
         addChild(new)
         new.view.frame = view.bounds
         view.addSubview(new.view)
@@ -50,6 +51,8 @@ class RootViewController: UIViewController {
         tapbarController.viewControllers = [mainVC,notesVc,settingVC]
         mainVC.modalTransitionStyle = .flipHorizontal
         loginViewController.viewControllers = [tapbarController]
+        loginViewController.modalPresentationStyle = .fullScreen
+        tapbarController.modalPresentationStyle = .fullScreen
         
         addChild(loginViewController)
         loginViewController.view.frame = view.bounds

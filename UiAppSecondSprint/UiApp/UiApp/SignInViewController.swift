@@ -41,13 +41,13 @@ class SignInViewController: UIViewController {
         let settingVC = SettingsViewController()
         let notesVc = NotesViewController()
         let tapbarController = UITabBarController()
-        let loginViewController = UINavigationController()
+       
         
-
+        tabBarController?.modalPresentationStyle = .fullScreen
         tapbarController.viewControllers = [mainVC,notesVc,settingVC]
         mainVC.modalTransitionStyle = .flipHorizontal
 
-        loginViewController.viewControllers = [tapbarController]
+        tapbarController.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(tapbarController, animated: true)
     }
    
