@@ -3,6 +3,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
+    
     let registerButtom = UIButton(type: .system)
     
     override func viewDidLoad() {
@@ -35,18 +36,19 @@ class SignInViewController: UIViewController {
     
     @objc func registerButtonPressed() {
         
+        
         let mainVC = MainViewController()
         let settingVC = SettingsViewController()
         let notesVc = NotesViewController()
         let tapbarController = UITabBarController()
         let loginViewController = UINavigationController()
         
-        
+
         tapbarController.viewControllers = [mainVC,notesVc,settingVC]
         mainVC.modalTransitionStyle = .flipHorizontal
-        
+
         loginViewController.viewControllers = [tapbarController]
-        present(loginViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(tapbarController, animated: true)
     }
    
     

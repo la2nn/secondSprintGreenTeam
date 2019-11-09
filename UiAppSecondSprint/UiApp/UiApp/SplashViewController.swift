@@ -45,7 +45,7 @@ class SplashViewController: UIViewController {
     
     
     @objc func loginButtonPressed () {
-         UserDefaults.standard.set(true, forKey: "LOGGED_IN")
+         UserDefaults.standard.set(false, forKey: "LOGGED_IN")
          makeServiceCall()
         
     }
@@ -62,7 +62,7 @@ class SplashViewController: UIViewController {
             } else {
                 let rootVc =  AppDelegate.shared.rootVC
                 rootVc.showMainScreen()
-                self.navigationController?.pushViewController(NotesViewController(), animated: true)
+                
                 
             }
         }
