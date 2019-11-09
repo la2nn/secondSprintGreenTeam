@@ -4,7 +4,7 @@ import UIKit
 
 class NotesViewController: UIViewController {
     
-   var textView = UITextView(frame: CGRect(x: 124, y: 103, width: 135, height: 21))
+   var textView = UILabel(frame: CGRect(x: 124, y: 103, width: 135, height: 21))
     
     override func viewDidLoad() {
         super.viewDidLoad()
