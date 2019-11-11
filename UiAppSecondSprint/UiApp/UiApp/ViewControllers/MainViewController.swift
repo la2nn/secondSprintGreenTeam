@@ -9,7 +9,6 @@ class MainViewController: UIViewController {
         
     }
     
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "main"), tag: 0)
@@ -19,11 +18,10 @@ class MainViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
-    
 
 
 }

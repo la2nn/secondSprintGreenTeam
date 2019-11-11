@@ -1,21 +1,8 @@
-
-
 import UIKit
 
 class RootViewController: UIViewController {
-    
   
-    private var current: UIViewController
-    
-    
-    init(){
-        self.current = SplashViewController()
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var current: UIViewController = SplashViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +27,17 @@ class RootViewController: UIViewController {
     }
     
     func showMainScreen() {
-        
-        
         let loginViewController = UINavigationController(rootViewController: LoginViewController())
         let mainVC = MainViewController()
         let settingVC = SettingsViewController()
-        let notesVc = NotesViewController()
-        let tapbarController = UITabBarController()
+        let notesVC = NotesViewController()
+        let tabBarController = UITabBarController()
         
-        tapbarController.viewControllers = [mainVC,notesVc,settingVC]
+        tabBarController.viewControllers = [mainVC, notesVC, settingVC]
         mainVC.modalTransitionStyle = .flipHorizontal
-        loginViewController.viewControllers = [tapbarController]
+        loginViewController.viewControllers = [tabBarController]
         loginViewController.modalPresentationStyle = .fullScreen
-        tapbarController.modalPresentationStyle = .fullScreen
+        tabBarController.modalPresentationStyle = .fullScreen
         
         addChild(loginViewController)
         loginViewController.view.frame = view.bounds
@@ -62,10 +47,7 @@ class RootViewController: UIViewController {
         current.view.removeFromSuperview()
         current.removeFromParent()
         current = loginViewController
-        
-        
     }
-
 
 }
 

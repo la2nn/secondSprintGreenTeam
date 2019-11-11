@@ -15,7 +15,7 @@
 		950DBD992374B19D00E6B6EF /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD982374B19D00E6B6EF /* LoginViewController.swift */; };
 		950DBD9B2374B1AD00E6B6EF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */; };
 		950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */; };
-		950DBD9F2374CFAF00E6B6EF /* SIgnUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9E2374CFAF00E6B6EF /* SIgnUpViewController.swift */; };
+		950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */; };
 		950DBDA12374E2A300E6B6EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */; };
 		950DBDA32374E2C800E6B6EF /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA22374E2C800E6B6EF /* NotesViewController.swift */; };
 		950DBDA723760A8300E6B6EF /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */; };
@@ -33,7 +33,7 @@
 		950DBD982374B19D00E6B6EF /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
-		950DBD9E2374CFAF00E6B6EF /* SIgnUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIgnUpViewController.swift; sourceTree = "<group>"; };
+		950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		950DBDA22374E2C800E6B6EF /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +51,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		019262EA2377570200E16509 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				950DBD862374B03D00E6B6EF /* RootViewController.swift */,
+				950DBD962374B18A00E6B6EF /* SplashViewController.swift */,
+				950DBD982374B19D00E6B6EF /* LoginViewController.swift */,
+				950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */,
+				950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */,
+				950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */,
+				950DBDA22374E2C800E6B6EF /* NotesViewController.swift */,
+				950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */,
+				950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		950DBD782374B03D00E6B6EF = {
 			isa = PBXGroup;
 			children = (
@@ -71,16 +87,8 @@
 			isa = PBXGroup;
 			children = (
 				950DBD842374B03D00E6B6EF /* AppDelegate.swift */,
+				019262EA2377570200E16509 /* ViewControllers */,
 				950DBDAA23760F8700E6B6EF /* Singleton.swift */,
-				950DBD862374B03D00E6B6EF /* RootViewController.swift */,
-				950DBD962374B18A00E6B6EF /* SplashViewController.swift */,
-				950DBD982374B19D00E6B6EF /* LoginViewController.swift */,
-				950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */,
-				950DBD9E2374CFAF00E6B6EF /* SIgnUpViewController.swift */,
-				950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */,
-				950DBDA22374E2C800E6B6EF /* NotesViewController.swift */,
-				950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */,
-				950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */,
 				950DBD8B2374B04200E6B6EF /* Assets.xcassets */,
 				950DBD8D2374B04200E6B6EF /* LaunchScreen.storyboard */,
 				950DBD902374B04200E6B6EF /* Info.plist */,
@@ -160,7 +168,7 @@
 			files = (
 				950DBD992374B19D00E6B6EF /* LoginViewController.swift in Sources */,
 				950DBD972374B18A00E6B6EF /* SplashViewController.swift in Sources */,
-				950DBD9F2374CFAF00E6B6EF /* SIgnUpViewController.swift in Sources */,
+				950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */,
 				950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */,
 				950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */,
 				950DBDA32374E2C800E6B6EF /* NotesViewController.swift in Sources */,
@@ -316,7 +324,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = home.UiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -334,7 +342,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = home.UiApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

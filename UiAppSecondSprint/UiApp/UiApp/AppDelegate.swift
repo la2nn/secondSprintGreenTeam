@@ -48,10 +48,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 
 extension AppDelegate {
-    static var shared: AppDelegate {
-        return UIApplication.shared.delegate as! AppDelegate
-    }
     var rootVC: RootViewController {
-        return window!.rootViewController as! RootViewController
+        if let rootVC = window?.rootViewController as? RootViewController {
+            return rootVC
+        } else {
+            return RootViewController()
+        }
     }
 }
