@@ -20,18 +20,6 @@ class TasksColumnCell: UICollectionViewCell {
         return CollectionViewDataModel.shared.dataModel[index].textForEachLabel.count
     }
     
-//    override func prepareForReuse() {
-//        super.prepareForReuse()
-//        var indexPaths = [IndexPath]()
-//        for i in 0..<tasksInfo.count {
-//            indexPaths.append(IndexPath(row: i, section: 0))
-//        }
-//
-//        tasksInfo = []
-//        tableView.deleteRows(at: indexPaths, with: .automatic)
-//        tableView.reloadData()
-//    }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -42,7 +30,7 @@ class TasksColumnCell: UICollectionViewCell {
         tableView.backgroundColor = #colorLiteral(red: 0.9210130572, green: 0.9253756404, blue: 0.9426833987, alpha: 1)
         tableView.layer.cornerRadius = 10
         tableView.separatorStyle = .none
-    //    tableView.rowHeight = 120
+        tableView.rowHeight = 120
         
         tableView.tableFooterView = {
             let view = UIView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 30))
@@ -70,7 +58,6 @@ class TasksColumnCell: UICollectionViewCell {
         tableView.showsVerticalScrollIndicator = false
         
         tableView.dataSource = self
-        tableView.delegate = self
         
         tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: TasksTableViewCell.tableCellReuseId)
     }
@@ -97,15 +84,6 @@ extension TasksColumnCell: UITableViewDataSource {
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let cell = tableView.cellForRow(at: indexPath) as? TasksTableViewCell else { return 120 }
-        if cell.isTapped  {
-            return max(10.0 + cell.infoLabel.textRect(forBounds: CGRect(x: 0, y: 0, width: cell.frame.width, height: 9999), limitedToNumberOfLines: 0).height, 120)
-        } else {
-            return 120
-        }
-    }
-    
     @objc private func createNewTask() {
         delegate?.getTextFromAlertController(completionHandler: { (str) in
             guard str != "" else { return }
@@ -119,16 +97,6 @@ extension TasksColumnCell: UITableViewDataSource {
         })
        
     }
-}
-
-extension TasksColumnCell: UITableViewDelegate {
-    
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//
-//        guard let cell = tableView.cellForRow(at: indexPath) as? TasksTableViewCell else { return }
-//        cell.frame.size.height += 100
-//    }
-
 }
 
 extension TasksColumnCell {
@@ -145,26 +113,13 @@ extension TasksColumnCell: UITextFieldDelegate {
 }
 
 extension TasksColumnCell: TasksTableViewCellDelegate {
-    func didTouch(cell: TasksTableViewCell) {
-
+    func showFull(text: String) {
+        self.delegate?.showMessage(text: text)
     }
 }
 
 protocol TasksColumnCellDelegate {
     func getTextFromAlertController(completionHandler: @escaping (String) -> Void)
+    func showMessage(text: String)
 }
-
-
-/*
- let cell = tableView.cellForRow(at: indexPath)
- guard let isCellSelected = cell?.isSelected else { return 100 }
- if isCellSelected {
-     return cell?.textLabel?.textRect(forBounds: CGRect(x: 0, y: 0,
-                                                        width: cell?.textLabel?.frame.width ?? self.tableView.frame.width,
-                                                        height: 9999),
-                                      limitedToNumberOfLines: 0).height ?? 100
- } else {
-     return 100
- }
- */
 

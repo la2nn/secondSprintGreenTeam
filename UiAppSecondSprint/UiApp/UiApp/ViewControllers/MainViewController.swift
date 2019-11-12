@@ -38,7 +38,6 @@ class MainViewController: UIViewController {
                                 withReuseIdentifier: CreateNewColumnCell.reuseId)
     }
     
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "main"), tag: 0)
@@ -50,6 +49,7 @@ class MainViewController: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
     }
     
@@ -75,6 +75,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                                                                    for: indexPath) as! CreateNewColumnCell
         cell.layer.cornerRadius = 10
         cell.delegate = self
+        
         return cell
     }
 
@@ -98,6 +99,12 @@ extension MainViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension MainViewController: TasksColumnCellDelegate {
+    func showMessage(text: String) {
+        let alertController = UIAlertController(title: "Текст ячейки", message: text, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
+        present(alertController, animated: true)
+    }
+    
     func getTextFromAlertController(completionHandler: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: "Введите содержимое карточки", message: nil, preferredStyle: .alert)
         
@@ -114,3 +121,4 @@ extension MainViewController: TasksColumnCellDelegate {
         present(alertController, animated: true)
     }
 }
+

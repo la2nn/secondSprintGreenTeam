@@ -12,13 +12,7 @@ class TasksTableViewCell: UITableViewCell {
     
     public var infoLabel = SelfSizedUILabel()
     public static let tableCellReuseId = "TableCell"
-    private var heightLabelConstraint: NSLayoutConstraint!
     var delegate: TasksTableViewCellDelegate?
-    var isTapped = false {
-        didSet {
-            delegate?.didTouch(cell: self)
-        }
-    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -37,14 +31,7 @@ class TasksTableViewCell: UITableViewCell {
         view.addSubview(infoLabel)
         infoLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         infoLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        heightLabelConstraint = NSLayoutConstraint(item: infoLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .height, multiplier: 1, constant: 100)
-        heightLabelConstraint.isActive = true
-        infoLabel.addConstraint(heightLabelConstraint)
-       // infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        //infoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-       
-        infoLabel.addConstraint(heightLabelConstraint)
-       // infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
+        infoLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -10).isActive = true
         infoLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         
         infoLabel.lineBreakMode = .byTruncatingTail
@@ -53,7 +40,8 @@ class TasksTableViewCell: UITableViewCell {
         infoLabel.clipsToBounds = true
         infoLabel.backgroundColor = .white
         infoLabel.isUserInteractionEnabled = true
-        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+        
+        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap)))
     }
     
     required init?(coder: NSCoder) {
@@ -70,31 +58,13 @@ class TasksTableViewCell: UITableViewCell {
 
     }
     
-    @objc private func handleTap(sender: UITapGestureRecognizer) {
-        guard let label = hitTest(sender.location(in: self), with: nil) as? UILabel else { return }
-        
-        if label.frame.height == 100 {
-            //let height = NSLayoutDimension()
-           // height.constraint(equalToConstant: label.textRect(forBounds: CGRect(x: 0, y: 0, width: label.frame.width, height: 9999), limitedToNumberOfLines: 0).height)
-            
-            UIView.animate(withDuration: 0.3, animations: {
-                let increaseValue = label.textRect(forBounds: CGRect(x: 0, y: 0, width: label.frame.width, height: 9999), limitedToNumberOfLines: 0).height
-                self.heightLabelConstraint.constant = max(increaseValue, 100)
-                label.setNeedsLayout()
-                label.layoutIfNeeded()
-            }) { (_) in
-                self.isTapped = true
-            }
-            
-           
-            //UIView.animate(withDuration: 0.3) {
-             //   label.heightAnchor.constraint(equalToConstant: label.textRect(forBounds: CGRect(x: 0, y: 0, width: label.frame.width, height: 9999), limitedToNumberOfLines: 0).height).isActive = true
-            //}
-        }
+    @objc private func handleTap() {
+        guard let text = self.infoLabel.text else { return }
+        delegate?.showFull(text: text)
     }
 
 }
 
 protocol TasksTableViewCellDelegate {
-    func didTouch(cell: TasksTableViewCell)
+    func showFull(text: String)
 }
