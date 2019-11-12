@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01633D8D237AAEE200FEC3C3 /* SelfSizedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D8C237AAEE200FEC3C3 /* SelfSizedUILabel.swift */; };
+		01633D91237ADDC800FEC3C3 /* CollectionViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D90237ADDC800FEC3C3 /* CollectionViewDataModel.swift */; };
+		0173087D2379BA480066256B /* TasksColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173087C2379BA480066256B /* TasksColumnCell.swift */; };
+		0173087F2379E63B0066256B /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0173087E2379E63B0066256B /* TasksTableViewCell.swift */; };
+		017308852379F2140066256B /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 017308842379F2140066256B /* CreateNewColumnCell.swift */; };
+		01730887237A31850066256B /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01730886237A31850066256B /* SelfSizedTableView.swift */; };
 		950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
 		950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
 		950DBD8C2374B04200E6B6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950DBD8B2374B04200E6B6EF /* Assets.xcassets */; };
@@ -23,6 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01633D8C237AAEE200FEC3C3 /* SelfSizedUILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedUILabel.swift; sourceTree = "<group>"; };
+		01633D90237ADDC800FEC3C3 /* CollectionViewDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataModel.swift; sourceTree = "<group>"; };
+		0173087C2379BA480066256B /* TasksColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksColumnCell.swift; sourceTree = "<group>"; };
+		0173087E2379E63B0066256B /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
+		017308842379F2140066256B /* CreateNewColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCell.swift; sourceTree = "<group>"; };
+		01730886237A31850066256B /* SelfSizedTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		950DBD812374B03D00E6B6EF /* UiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950DBD842374B03D00E6B6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		950DBD862374B03D00E6B6EF /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -51,6 +63,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+<<<<<<< Updated upstream
+=======
+		01633D8E237AC42800FEC3C3 /* CustomViewClasses */ = {
+			isa = PBXGroup;
+			children = (
+				01730886237A31850066256B /* SelfSizedTableView.swift */,
+				01633D8C237AAEE200FEC3C3 /* SelfSizedUILabel.swift */,
+			);
+			path = CustomViewClasses;
+			sourceTree = "<group>";
+		};
+		01633D8F237ADDA500FEC3C3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				01633D90237ADDC800FEC3C3 /* CollectionViewDataModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0173087B2379B97A0066256B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0173087E2379E63B0066256B /* TasksTableViewCell.swift */,
+				0173087C2379BA480066256B /* TasksColumnCell.swift */,
+				017308842379F2140066256B /* CreateNewColumnCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		019262EA2377570200E16509 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				950DBD862374B03D00E6B6EF /* RootViewController.swift */,
+				950DBD962374B18A00E6B6EF /* SplashViewController.swift */,
+				950DBD982374B19D00E6B6EF /* LoginViewController.swift */,
+				950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */,
+				950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */,
+				950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */,
+				950DBDA22374E2C800E6B6EF /* NotesViewController.swift */,
+				950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */,
+				950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+>>>>>>> Stashed changes
 		950DBD782374B03D00E6B6EF = {
 			isa = PBXGroup;
 			children = (
@@ -71,6 +129,13 @@
 			isa = PBXGroup;
 			children = (
 				950DBD842374B03D00E6B6EF /* AppDelegate.swift */,
+<<<<<<< Updated upstream
+=======
+				01633D8E237AC42800FEC3C3 /* CustomViewClasses */,
+				0173087B2379B97A0066256B /* View */,
+				01633D8F237ADDA500FEC3C3 /* Model */,
+				019262EA2377570200E16509 /* ViewControllers */,
+>>>>>>> Stashed changes
 				950DBDAA23760F8700E6B6EF /* Singleton.swift */,
 				950DBD862374B03D00E6B6EF /* RootViewController.swift */,
 				950DBD962374B18A00E6B6EF /* SplashViewController.swift */,
@@ -158,14 +223,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				017308852379F2140066256B /* CreateNewColumnCell.swift in Sources */,
 				950DBD992374B19D00E6B6EF /* LoginViewController.swift in Sources */,
 				950DBD972374B18A00E6B6EF /* SplashViewController.swift in Sources */,
+<<<<<<< Updated upstream
 				950DBD9F2374CFAF00E6B6EF /* SIgnUpViewController.swift in Sources */,
+=======
+				0173087F2379E63B0066256B /* TasksTableViewCell.swift in Sources */,
+				950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */,
+>>>>>>> Stashed changes
 				950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */,
 				950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */,
+				01633D91237ADDC800FEC3C3 /* CollectionViewDataModel.swift in Sources */,
 				950DBDA32374E2C800E6B6EF /* NotesViewController.swift in Sources */,
+				01633D8D237AAEE200FEC3C3 /* SelfSizedUILabel.swift in Sources */,
+				01730887237A31850066256B /* SelfSizedTableView.swift in Sources */,
 				950DBDAB23760F8700E6B6EF /* Singleton.swift in Sources */,
 				950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */,
+				0173087D2379BA480066256B /* TasksColumnCell.swift in Sources */,
 				950DBD9B2374B1AD00E6B6EF /* MainViewController.swift in Sources */,
 				950DBDA723760A8300E6B6EF /* CreateNoteViewController.swift in Sources */,
 				950DBDA12374E2A300E6B6EF /* SettingsViewController.swift in Sources */,
