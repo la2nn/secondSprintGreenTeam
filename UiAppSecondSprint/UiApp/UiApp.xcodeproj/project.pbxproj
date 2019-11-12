@@ -13,6 +13,8 @@
 		01633D9D237B56A300FEC3C3 /* CollectionViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D9C237B56A300FEC3C3 /* CollectionViewDataModel.swift */; };
 		01633DA1237B56F000FEC3C3 /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D9F237B56F000FEC3C3 /* SelfSizedTableView.swift */; };
 		01633DA2237B56F000FEC3C3 /* SelfSizedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA0237B56F000FEC3C3 /* SelfSizedUILabel.swift */; };
+		01633DA4237B5C8100FEC3C3 /* NotesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */; };
+		01633DA6237B5F3400FEC3C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA5237B5F3400FEC3C3 /* NoteCell.swift */; };
 		950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
 		950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
 		950DBD8C2374B04200E6B6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950DBD8B2374B04200E6B6EF /* Assets.xcassets */; };
@@ -23,9 +25,7 @@
 		950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */; };
 		950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */; };
 		950DBDA12374E2A300E6B6EF /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */; };
-		950DBDA32374E2C800E6B6EF /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA22374E2C800E6B6EF /* NotesViewController.swift */; };
-		950DBDA723760A8300E6B6EF /* CreateNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */; };
-		950DBDAB23760F8700E6B6EF /* Singleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDAA23760F8700E6B6EF /* Singleton.swift */; };
+		950DBDA723760A8300E6B6EF /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA623760A8300E6B6EF /* NotesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +35,8 @@
 		01633D9C237B56A300FEC3C3 /* CollectionViewDataModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewDataModel.swift; sourceTree = "<group>"; };
 		01633D9F237B56F000FEC3C3 /* SelfSizedTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedTableView.swift; sourceTree = "<group>"; };
 		01633DA0237B56F000FEC3C3 /* SelfSizedUILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelfSizedUILabel.swift; sourceTree = "<group>"; };
+		01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataModel.swift; sourceTree = "<group>"; };
+		01633DA5237B5F3400FEC3C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		950DBD812374B03D00E6B6EF /* UiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950DBD842374B03D00E6B6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		950DBD862374B03D00E6B6EF /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -47,9 +49,7 @@
 		950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		950DBDA22374E2C800E6B6EF /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
-		950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteViewController.swift; sourceTree = "<group>"; };
-		950DBDAA23760F8700E6B6EF /* Singleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Singleton.swift; sourceTree = "<group>"; };
+		950DBDA623760A8300E6B6EF /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +70,7 @@
 				01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */,
 				01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */,
 				01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */,
+				01633DA5237B5F3400FEC3C3 /* NoteCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -78,6 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				01633D9C237B56A300FEC3C3 /* CollectionViewDataModel.swift */,
+				01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -101,8 +103,7 @@
 				950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */,
 				950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */,
 				950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */,
-				950DBDA22374E2C800E6B6EF /* NotesViewController.swift */,
-				950DBDA623760A8300E6B6EF /* CreateNoteViewController.swift */,
+				950DBDA623760A8300E6B6EF /* NotesViewController.swift */,
 				950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -131,7 +132,6 @@
 				01633D92237B566C00FEC3C3 /* View */,
 				01633D9B237B56A300FEC3C3 /* Model */,
 				019262EA2377570200E16509 /* ViewControllers */,
-				950DBDAA23760F8700E6B6EF /* Singleton.swift */,
 				950DBD8B2374B04200E6B6EF /* Assets.xcassets */,
 				950DBD8D2374B04200E6B6EF /* LaunchScreen.storyboard */,
 				950DBD902374B04200E6B6EF /* Info.plist */,
@@ -216,16 +216,16 @@
 				950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */,
 				950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */,
 				950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */,
-				950DBDA32374E2C800E6B6EF /* NotesViewController.swift in Sources */,
-				950DBDAB23760F8700E6B6EF /* Singleton.swift in Sources */,
 				950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */,
 				01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */,
 				950DBD9B2374B1AD00E6B6EF /* MainViewController.swift in Sources */,
-				950DBDA723760A8300E6B6EF /* CreateNoteViewController.swift in Sources */,
+				950DBDA723760A8300E6B6EF /* NotesViewController.swift in Sources */,
 				01633D98237B566C00FEC3C3 /* TasksColumnCell.swift in Sources */,
 				950DBDA12374E2A300E6B6EF /* SettingsViewController.swift in Sources */,
+				01633DA6237B5F3400FEC3C3 /* NoteCell.swift in Sources */,
 				01633DA2237B56F000FEC3C3 /* SelfSizedUILabel.swift in Sources */,
 				01633DA1237B56F000FEC3C3 /* SelfSizedTableView.swift in Sources */,
+				01633DA4237B5C8100FEC3C3 /* NotesDataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

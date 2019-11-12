@@ -31,7 +31,6 @@ class SettingsViewController: UIViewController {
         
         let rootVC = appDelegate.rootVC
         rootVC.showLoginScreen()
-        Singleton.shared.value = 0
         navigationController?.pushViewController(LoginViewController(), animated: true)
     }
     
