@@ -28,7 +28,7 @@ class SettingsViewController: UIViewController {
     
     @objc private func signOutButtonPressed() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
+        NotesDataModel.shared.dataModel.removeAll()
         let rootVC = appDelegate.rootVC
         rootVC.showLoginScreen()
         navigationController?.pushViewController(LoginViewController(), animated: true)

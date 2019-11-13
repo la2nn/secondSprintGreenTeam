@@ -89,18 +89,9 @@ extension NotesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.performBatchUpdates({
-            let alertController = UIAlertController(title: "Редактирование заметки: ", message: nil, preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Содержимое заметки: ", message: NotesDataModel.shared.dataModel[indexPath.row], preferredStyle: .alert)
             
-            alertController.addTextField(configurationHandler: { field in
-                field.text = NotesDataModel.shared.dataModel[indexPath.row]
-            })
-            
-            alertController.addAction(UIAlertAction(title: "Сохранить", style: .destructive, handler: { (_) in
-                NotesDataModel.shared.dataModel[indexPath.row] = alertController.textFields?.first?.text ?? ""
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }))
-            
-            alertController.addAction(UIAlertAction(title: "Отменить", style: .cancel, handler: nil))
+            alertController.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
             
             present(alertController, animated: true)
             
