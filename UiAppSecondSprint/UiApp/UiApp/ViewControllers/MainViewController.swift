@@ -2,41 +2,8 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     private var collectionView: UICollectionView!
-    private var arrayListWithCards: [ListWithCards] = []
-    
-    private var cortege = (false, false) {
-        didSet {
-            if self.cortege == (true, true) {
-                for i in self.lists {
-                    var listCard = ListWithCards(list: i.name, cards: [])
-                    for j in self.cards {
-                        if j.idList == i.id {
-                            listCard.cards.append(j.name)
-                        }
-                    }
-                    arrayListWithCards.append(listCard)
-                    
-                }
-            }
-            print(arrayListWithCards)
-        }
-    }
-    private let idBoard = "2XJ1X5mg"
-    private let apiToken: String = "375c9d91cf52dd50f5feb1c2b7ca76fdd2ac9f621ddaf08e3686ee1d5e7a650c"
-    private let apiKey: String = "28e8753e7b1cb1c96af05f7e48fd6748"
-    private var trelloCardLink: String {
-        return "https://api.trello.com/1/boards/\(idBoard)/cards?fields=idList,name&key=\(apiKey)&token=\(apiToken)"
-    }
-    
-    private var trelloListLink: String {
-        return "https://api.trello.com/1/boards/\(idBoard)/lists?fields=name&key=\(apiKey)&token=\(apiToken)"
-    }
-    
-    
-    private var cards: [Card] = []
-    private var lists: [List] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,47 +51,6 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
 
-        // MARK: GET ЗАПРОС
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let url1 = URL(string: trelloCardLink)!
-        let urlRequest1 = URLRequest(url: url1, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 1)
-        
-        
-        let task1 = session.dataTask(with: urlRequest1, completionHandler: {(data, response, error)
-            in
-            do {
-                let posts = try JSONDecoder().decode([Card].self, from: data!)
-                self.cards = Array(posts)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                self.cortege.1 = true
-            } catch {
-                print(error)
-            }
-        })
-        task1.resume()
-        
-        
-        let url2 = URL(string: trelloListLink)!
-        let urlRequest2 = URLRequest(url: url2, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 1)
-        
-        let task2 = session.dataTask(with: urlRequest2, completionHandler: {(data, response, error)
-            in
-            do {
-                let posts = try JSONDecoder().decode([List].self, from: data!)
-                self.lists = Array(posts)
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-                self.cortege.0 = true
-            } catch {
-                print(error)
-            }
-        })
-        task2.resume()
     }
 
 }
@@ -137,6 +63,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TasksColumnCell.reuseId, for: indexPath) as! TasksColumnCell
         cell.delegate = self
+        cell.listName = CollectionViewDataModel.shared.dataModel[indexPath.row].list
+        cell.cards = CollectionViewDataModel.shared.dataModel[indexPath.row].cards
         return cell
     }
     
@@ -153,9 +81,8 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension MainViewController: CreateNewColumnCellDelegate {
     func buttonDidTouch() {
-
         collectionView.performBatchUpdates({
-            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel(index: CollectionViewDataModel.shared.dataModel.count))
+            CollectionViewDataModel.shared.dataModel.append(ListWithCards(list: "Имя колонки", cards: ["Введите содержимое карточки"]))
             collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
                                                       section: 0)])
         }, completion: nil)

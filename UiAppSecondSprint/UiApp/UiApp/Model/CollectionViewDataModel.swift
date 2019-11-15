@@ -25,15 +25,10 @@ struct ListWithCards {
 }
 
 class CollectionViewDataModel {
-    struct DataModel {
-        var index: Int
-        var columnName: String = "Имя колонны..."
-        var textForEachLabel: Array<String> = []
-    }
     
     static let shared = CollectionViewDataModel()
 
-    var dataModel: Array<DataModel> = []
+    var dataModel: Array<ListWithCards> = []
     
     private init() { }
 }

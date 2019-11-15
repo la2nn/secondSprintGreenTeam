@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013AEE4C237F4E37002E8BA5 /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
 		01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */; };
 		01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */; };
 		01633D98237B566C00FEC3C3 /* TasksColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworking.swift; sourceTree = "<group>"; };
 		01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCell.swift; sourceTree = "<group>"; };
 		01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksColumnCell.swift; sourceTree = "<group>"; };
@@ -63,6 +65,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		013AEE4A237F4DEE002E8BA5 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		01633D92237B566C00FEC3C3 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +142,7 @@
 				01633D92237B566C00FEC3C3 /* View */,
 				01633D9B237B56A300FEC3C3 /* Model */,
 				019262EA2377570200E16509 /* ViewControllers */,
+				013AEE4A237F4DEE002E8BA5 /* Network */,
 				950DBD8B2374B04200E6B6EF /* Assets.xcassets */,
 				950DBD8D2374B04200E6B6EF /* LaunchScreen.storyboard */,
 				950DBD902374B04200E6B6EF /* Info.plist */,
@@ -215,6 +226,7 @@
 				01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */,
 				950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */,
 				950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */,
+				013AEE4C237F4E37002E8BA5 /* TrelloNetworking.swift in Sources */,
 				950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */,
 				950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */,
 				01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */,

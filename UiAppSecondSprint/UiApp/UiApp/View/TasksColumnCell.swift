@@ -11,14 +11,12 @@ import UIKit
 class TasksColumnCell: UICollectionViewCell {
     
     private var tableView = SelfSizedTableView()
-    public var index = CollectionViewDataModel.shared.dataModel.count - 1
     public static let reuseId = "ColumnCell"
     
-    var delegate: TasksColumnCellDelegate?
+    var listName: String!
+    var cards: [String]!
     
-    private var cellCount: Int {
-        return CollectionViewDataModel.shared.dataModel[index].textForEachLabel.count
-    }
+    var delegate: TasksColumnCellDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -42,13 +40,6 @@ class TasksColumnCell: UICollectionViewCell {
             return view
         }()
         
-        tableView.tableHeaderView = {
-            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 30))
-            textField.textAlignment = .center
-            textField.text = CollectionViewDataModel.shared.dataModel[index].columnName
-            return textField
-        }()
-        
         self.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.heightAnchor.constraint(lessThanOrEqualToConstant: frame.height).isActive = true
@@ -66,18 +57,33 @@ class TasksColumnCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if superview != nil {
+            tableView.tableHeaderView = {
+                let textField = UITextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 30))
+                textField.textAlignment = .center
+                textField.text = self.listName
+                return textField
+            }()
+        }
+    }
+    
 }
+
+
 
 extension TasksColumnCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cellCount
+
+        return cards.count
     }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TasksTableViewCell.tableCellReuseId,
                                                  for: indexPath) as! TasksTableViewCell
 
-        cell.infoLabel.text = CollectionViewDataModel.shared.dataModel[index].textForEachLabel[indexPath.row]
+        cell.infoLabel.text = cards[indexPath.row]
         cell.selectionStyle = .none
         cell.delegate = self
 
@@ -88,7 +94,7 @@ extension TasksColumnCell: UITableViewDataSource {
         delegate?.getTextFromAlertController(completionHandler: { (str) in
             guard str != "" else { return }
             self.tableView.performBatchUpdates({
-                CollectionViewDataModel.shared.dataModel[self.index].textForEachLabel.append(str)
+                self.cards.append(str)
                 self.tableView.insertRows(at: [IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)],
                                           with: .automatic)
             }, completion: { _ in
@@ -108,7 +114,7 @@ extension TasksColumnCell {
 
 extension TasksColumnCell: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
-        CollectionViewDataModel.shared.dataModel[index].columnName = textField.text ?? "Имя колонны..."
+        listName = textField.text ?? "Имя колонны..."
     }
 }
 
