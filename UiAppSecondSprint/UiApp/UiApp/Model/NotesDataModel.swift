@@ -6,13 +6,23 @@
 //  Copyright © 2019 Artem Esolnyak. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NotesDataModel {
     
+    class CellDataModel {
+        var text: String
+        var image: UIImage?
+        
+        init(text: String) {
+            self.text = text
+        }
+    }
+    
     static let shared = NotesDataModel()
     
-    var dataModel: Array<String> = []
+    var dataModel: Array<CellDataModel> = []
     
     private init() { }
 }
+

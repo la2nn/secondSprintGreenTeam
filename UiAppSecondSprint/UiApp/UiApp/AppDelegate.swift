@@ -19,6 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = RootViewController()
         window?.makeKeyAndVisible()
         
+        let config = URLSessionConfiguration.default
+        let request = URLRequest(url: URL(string: "https://sprint-e1df8.firebaseio.com/test.json")!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 40)
+        URLSession(configuration: config).dataTask(with: request) { (data, response, error) in
+            print(String(data: data!, encoding: .utf8))
+        }.resume()
+        
         return true
     }
 

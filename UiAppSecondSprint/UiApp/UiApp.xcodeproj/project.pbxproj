@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		01453B53237C8A59007C9FFC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01453B52237C8A59007C9FFC /* ImagePicker.swift */; };
 		01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */; };
 		01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */; };
 		01633D98237B566C00FEC3C3 /* TasksColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		01453B52237C8A59007C9FFC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCell.swift; sourceTree = "<group>"; };
 		01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksColumnCell.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				950DBD842374B03D00E6B6EF /* AppDelegate.swift */,
+				01453B52237C8A59007C9FFC /* ImagePicker.swift */,
 				01633D92237B566C00FEC3C3 /* View */,
 				01633D9B237B56A300FEC3C3 /* Model */,
 				019262EA2377570200E16509 /* ViewControllers */,
@@ -209,6 +212,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01453B53237C8A59007C9FFC /* ImagePicker.swift in Sources */,
 				950DBD992374B19D00E6B6EF /* LoginViewController.swift in Sources */,
 				950DBD972374B18A00E6B6EF /* SplashViewController.swift in Sources */,
 				01633D9D237B56A300FEC3C3 /* CollectionViewDataModel.swift in Sources */,

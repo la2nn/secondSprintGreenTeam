@@ -9,8 +9,8 @@
 import Foundation
 
 class CollectionViewDataModel {
+    
     struct DataModel {
-        var index: Int
         var columnName: String = "Имя колонны..."
         var textForEachLabel: Array<String> = []
     }

@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.backgroundColor = #colorLiteral(red: 0.2951487303, green: 0.7470143437, blue: 0.4178136587, alpha: 1)
         collectionView.bounces = false
-        
+                
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(TasksColumnCell.self, forCellWithReuseIdentifier: TasksColumnCell.reuseId)
@@ -77,12 +77,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 extension MainViewController: CreateNewColumnCellDelegate {
-    func buttonDidTouch() {
-
+    func buttonDidTouch(item: CreateNewColumnCell) {
         collectionView.performBatchUpdates({
-            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel(index: CollectionViewDataModel.shared.dataModel.count))
+            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel())
             collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
                                                       section: 0)])
+            
         }, completion: nil)
     }
 }
