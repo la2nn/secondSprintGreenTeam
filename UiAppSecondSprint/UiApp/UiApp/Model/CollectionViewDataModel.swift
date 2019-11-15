@@ -8,6 +8,22 @@
 
 import Foundation
 
+struct Card: Decodable {
+    let idList: String
+    let name: String
+}
+
+struct List: Decodable {
+    let id: String
+    let name: String
+}
+
+
+struct ListWithCards {
+    let list: String
+    var cards: [String]
+}
+
 class CollectionViewDataModel {
     struct DataModel {
         var index: Int
