@@ -19,7 +19,8 @@ struct List: Decodable {
 }
 
 
-struct ListWithCards {
+struct ListWithCards: Codable {
+    let idList: String
     let list: String
     var cards: [String]
 }

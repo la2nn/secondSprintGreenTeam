@@ -53,7 +53,7 @@ class SignInViewController: UIViewController {
         loadingIndicator.center = view.center
         loadingIndicator.startAnimating()
         
-        TrelloNetworking.shared.start { (result) in
+        TrelloNetworking.shared.get { (result) in
             if result == true {
                 DispatchQueue.main.async {
                     loadingIndicator.stopAnimating()

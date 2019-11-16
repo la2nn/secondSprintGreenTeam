@@ -13,6 +13,7 @@ class TasksColumnCell: UICollectionViewCell {
     private var tableView = SelfSizedTableView()
     public static let reuseId = "ColumnCell"
     
+    var idList: String!
     var listName: String!
     var cards: [String]!
     
@@ -60,8 +61,8 @@ class TasksColumnCell: UICollectionViewCell {
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
         if superview != nil {
+            let textField = UITextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 30))
             tableView.tableHeaderView = {
-                let textField = UITextField(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: 30))
                 textField.textAlignment = .center
                 textField.text = self.listName
                 return textField
@@ -93,8 +94,12 @@ extension TasksColumnCell: UITableViewDataSource {
     @objc private func createNewTask() {
         delegate?.getTextFromAlertController(completionHandler: { (str) in
             guard str != "" else { return }
+            guard let idList = self.idList, let listName = self.listName else { return }
+            
             self.tableView.performBatchUpdates({
                 self.cards.append(str)
+                let listWithCard = ListWithCards(idList: idList, list: listName, cards: [str])
+                TrelloNetworking.shared.post(listWithCard)
                 self.tableView.insertRows(at: [IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)],
                                           with: .automatic)
             }, completion: { _ in

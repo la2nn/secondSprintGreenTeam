@@ -65,6 +65,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
         cell.delegate = self
         cell.listName = CollectionViewDataModel.shared.dataModel[indexPath.row].list
         cell.cards = CollectionViewDataModel.shared.dataModel[indexPath.row].cards
+        cell.idList = CollectionViewDataModel.shared.dataModel[indexPath.row].idList
         return cell
     }
     
@@ -82,7 +83,7 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 extension MainViewController: CreateNewColumnCellDelegate {
     func buttonDidTouch() {
         collectionView.performBatchUpdates({
-            CollectionViewDataModel.shared.dataModel.append(ListWithCards(list: "Имя колонки", cards: ["Введите содержимое карточки"]))
+            CollectionViewDataModel.shared.dataModel.append(ListWithCards(idList: "id", list: "Имя колонки", cards: ["Введите содержимое карточки"]))
             collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
                                                       section: 0)])
         }, completion: nil)

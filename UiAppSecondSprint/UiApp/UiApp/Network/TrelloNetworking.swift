@@ -16,7 +16,7 @@ class TrelloNetworking {
         didSet {
             if self.cortege == (true, true) {
                 for i in self.lists {
-                    var listCard = ListWithCards(list: i.name, cards: [])
+                    var listCard = ListWithCards(idList: i.id, list: i.name, cards: [])
                     for j in self.cards {
                         if j.idList == i.id {
                             listCard.cards.append(j.name)
@@ -27,6 +27,7 @@ class TrelloNetworking {
                 }
             }
             CollectionViewDataModel.shared.dataModel = arrayListWithCards
+            print(arrayListWithCards)
         }
     }
     private let idBoard = "2XJ1X5mg"
@@ -39,14 +40,15 @@ class TrelloNetworking {
     private var trelloListLink: String {
         return "https://api.trello.com/1/boards/\(idBoard)/lists?fields=name&key=\(apiKey)&token=\(apiToken)"
     }
-
+    
+    
 
     private var cards: [Card] = []
     private var lists: [List] = []
 
     public static let shared = TrelloNetworking()
 
-    func start(_ callback: @escaping (Bool) -> Void) {
+    func get(_ callback: @escaping (Bool) -> Void) {
         // MARK: GET ЗАПРОС
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
@@ -84,6 +86,42 @@ class TrelloNetworking {
         task1.resume()
         
     }
+    // MARK: POST ЗАПРОС
+    func post(_ card: ListWithCards) {
+            
+            guard card.idList != "" else { return }
+        
+            guard let uploadData = try? JSONEncoder().encode(card) else { return }
+            
+        let urlString = "https://api.trello.com/1/cards?name=\(card.cards[0])&idList=\(card.idList)&keepFromSource=all&key=\(apiKey)&token=\(apiToken)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
+            
+            let myUrl = URL(string: urlString)!
+            print(myUrl.absoluteString)
+            
+            var request = URLRequest(url: myUrl)
+            request.httpMethod = "POST"
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
+                if let error = error {
+                    print ("error: \(error)")
+                    return
+                }
+                guard let response = response as? HTTPURLResponse,
+                    (200...299).contains(response.statusCode) else {
+                        print ("server error")
+                        return
+                }
+                if let mimeType = response.mimeType,
+                    mimeType == "application/json",
+                    let data = data,
+                    let dataString = String(data: data, encoding: .utf8) {
+                    print ("got data: \(dataString)")
+                }
+            }
+            task.resume()
+            return
+        }
     
 }
 
