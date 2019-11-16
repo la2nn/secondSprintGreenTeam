@@ -70,22 +70,22 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
                                                                    withReuseIdentifier: CreateNewColumnCell.reuseId,
                                                                    for: indexPath) as! CreateNewColumnCell
         cell.layer.cornerRadius = 10
-        cell.delegate = self
+      //  cell.delegate = self
         
         return cell
     }
 }
-
-extension MainViewController: CreateNewColumnCellDelegate {
-    func buttonDidTouch() {
-
-        collectionView.performBatchUpdates({
-            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel(index: CollectionViewDataModel.shared.dataModel.count))
-            collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
-                                                      section: 0)])
-        }, completion: nil)
-    }
-}
+//
+//extension MainViewController: CreateNewColumnCellDelegate {
+//    func buttonDidTouch() {
+//
+//        collectionView.performBatchUpdates({
+//            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel(index: CollectionViewDataModel.shared.dataModel.count),
+//            collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
+//                                                      section: 0)])
+//        }, completion: nil)
+//    }
+//}
 
 extension MainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
