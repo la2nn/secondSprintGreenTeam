@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		013B362E2381A4A7007F0CEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362D2381A4A7007F0CEA /* Extensions.swift */; };
+		013B36302381BDF0007F0CEA /* NoteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */; };
 		01453B53237C8A59007C9FFC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01453B52237C8A59007C9FFC /* ImagePicker.swift */; };
 		01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */; };
 		01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		013B362D2381A4A7007F0CEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInfoViewController.swift; sourceTree = "<group>"; };
 		01453B52237C8A59007C9FFC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCell.swift; sourceTree = "<group>"; };
 		01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		019262EA2377570200E16509 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				01453B52237C8A59007C9FFC /* ImagePicker.swift */,
 				950DBD862374B03D00E6B6EF /* RootViewController.swift */,
 				950DBD962374B18A00E6B6EF /* SplashViewController.swift */,
 				950DBD982374B19D00E6B6EF /* LoginViewController.swift */,
@@ -106,6 +111,7 @@
 				950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */,
 				950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */,
 				950DBDA623760A8300E6B6EF /* NotesViewController.swift */,
+				013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */,
 				950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
@@ -131,10 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				950DBD842374B03D00E6B6EF /* AppDelegate.swift */,
-				01453B52237C8A59007C9FFC /* ImagePicker.swift */,
 				01633D92237B566C00FEC3C3 /* View */,
 				01633D9B237B56A300FEC3C3 /* Model */,
 				019262EA2377570200E16509 /* ViewControllers */,
+				013B362D2381A4A7007F0CEA /* Extensions.swift */,
 				950DBD8B2374B04200E6B6EF /* Assets.xcassets */,
 				950DBD8D2374B04200E6B6EF /* LaunchScreen.storyboard */,
 				950DBD902374B04200E6B6EF /* Info.plist */,
@@ -212,6 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				013B36302381BDF0007F0CEA /* NoteInfoViewController.swift in Sources */,
 				01453B53237C8A59007C9FFC /* ImagePicker.swift in Sources */,
 				950DBD992374B19D00E6B6EF /* LoginViewController.swift in Sources */,
 				950DBD972374B18A00E6B6EF /* SplashViewController.swift in Sources */,
@@ -219,6 +226,7 @@
 				01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */,
 				950DBD9F2374CFAF00E6B6EF /* SignUpViewController.swift in Sources */,
 				950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */,
+				013B362E2381A4A7007F0CEA /* Extensions.swift in Sources */,
 				950DBD9D2374CF9900E6B6EF /* SignInViewController.swift in Sources */,
 				950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */,
 				01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */,

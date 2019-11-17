@@ -11,6 +11,7 @@ import UIKit
 class NotesViewController: UIViewController {
     
     var tableView: UITableView!
+    var loadingIndicator = UIActivityIndicatorView(style: .gray)
     
     private lazy var imagePicker = ImagePicker()
     private weak var imageView: UIImageView!
@@ -18,6 +19,13 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
+        view.addSubview(loadingIndicator)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        loadingIndicator.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor).isActive = true
+        loadingIndicator.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor).isActive = true
+        loadingIndicator.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        loadingIndicator.widthAnchor.constraint(equalToConstant: 60).isActive = true
         
         tableView = UITableView(frame: view.frame)
         tableView.backgroundColor = #colorLiteral(red: 0.9589001536, green: 0.9590606093, blue: 0.9588790536, alpha: 1)
@@ -33,8 +41,7 @@ class NotesViewController: UIViewController {
         tableView.delegate = self
         
         imagePicker.delegate = self
-
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.rowHeight = 200
         tableView.register(NoteCell.self, forCellReuseIdentifier: NoteCell.reuseId)
         
         tableView.separatorStyle = .none
@@ -49,7 +56,27 @@ class NotesViewController: UIViewController {
             return button
         }()
         
-       
+        view.bringSubviewToFront(loadingIndicator)
+        showIndicator()
+               
+        // GET Notes
+        let config = URLSessionConfiguration.default
+        var request = URLRequest(url: URL(string: "https://sprint-e1df8.firebaseio.com/notes.json?auth=7ptTMrMXzwLqEHn3PnhDwDpipWCXJnhwnVwGeacW")!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 40)
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession(configuration: config).dataTask(with: request) { (data, response, error) in
+            guard let data = data else { self.hideIndicator() ; return }
+            do {
+                NotesDataModel.shared.dataModel = try JSONDecoder().decode([NotesDataModel.CellDataModel].self, from: data)
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            } catch {
+                print(error.localizedDescription)
+            }
+            self.hideIndicator()
+        }.resume()
+        
     }
 
     init() {
@@ -61,6 +88,18 @@ class NotesViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    private func showIndicator() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
+        }
+    }
+    
+    private func hideIndicator() {
+        DispatchQueue.main.async {
+            self.loadingIndicator.stopAnimating()
+        }
+    }
+    
     @objc private func addButtonTapped() {
         tableView.performBatchUpdates({
             let alertController = UIAlertController(title: "Введите текст для заметки", message: nil, preferredStyle: .alert)
@@ -68,7 +107,13 @@ class NotesViewController: UIViewController {
             alertController.addTextField(configurationHandler: nil)
             
             alertController.addAction(UIAlertAction(title: "Сохранить", style: .destructive, handler: { (_) in
+                self.showIndicator()
                 NotesDataModel.shared.dataModel.append(NotesDataModel.CellDataModel(text: alertController.textFields?.first?.text ?? ""))
+                
+                NotesDataModel.uploadNotesToFirebase { (_) in
+                    self.hideIndicator()
+                }
+                
                 self.tableView.insertRows(at: [IndexPath(row: NotesDataModel.shared.dataModel.count - 1, section: 0)],
                                           with: .automatic)
             }))
@@ -88,17 +133,22 @@ extension NotesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseId, for: indexPath) as! NoteCell
-        if let image = NotesDataModel.shared.dataModel[indexPath.row].image {
-            cell.downloadedImage = image
+        let cell = NoteCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: tableView.rowHeight))
+     //   let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseId, for: indexPath) as! NoteCell
+        if NotesDataModel.shared.dataModel[indexPath.row].image == nil {
+            if let imageURL = NotesDataModel.shared.dataModel[indexPath.row].imageURL, imageURL != "nil", cell.imageURL == nil {
+                cell.imageURL = imageURL
+            }
+        } else {
+            cell.downloadedImage = NotesDataModel.shared.dataModel[indexPath.row].image!
         }
         cell.delegate = self
         cell.selfIndex = indexPath.row
         cell.selectionStyle = .none
+        cell.noteTextLabel.textAlignment = .center
         cell.noteTextLabel.text = NotesDataModel.shared.dataModel[indexPath.row].text
         return cell
     }
-    
 }
 
 extension NotesViewController: UITableViewDelegate {
@@ -106,27 +156,24 @@ extension NotesViewController: UITableViewDelegate {
         tableView.performBatchUpdates({
             let alertController = UIAlertController(title: "Содержимое заметки: ", message: NotesDataModel.shared.dataModel[indexPath.row].text, preferredStyle: .alert)
             
-            if let titleView = alertController.view.subviews[0].subviews[0].subviews[0].subviews[0].subviews[0].subviews[1] as? UILabel,
-                let messageView = alertController.view.subviews[0].subviews[0].subviews[0].subviews[0].subviews[0].subviews[2] as? UILabel,
-                let image = NotesDataModel.shared.dataModel[indexPath.row].image {
-                
-                let imageView = UIImageView(image: image)
-                imageView.translatesAutoresizingMaskIntoConstraints = false
-                imageView.contentMode = .scaleAspectFit
-                alertController.view.addSubview(imageView)
-                imageView.topAnchor.constraint(equalTo: titleView.bottomAnchor).isActive = true
-                imageView.leadingAnchor.constraint(equalTo: titleView.leadingAnchor, constant: 10).isActive = true
-                imageView.trailingAnchor.constraint(equalTo: titleView.trailingAnchor, constant: -10).isActive = true
-                imageView.heightAnchor.constraint(equalToConstant: self.view.frame.height * 0.3).isActive = true
-                messageView.topAnchor.constraint(equalTo: imageView.bottomAnchor).isActive = true
-            }
-          
-            
             alertController.addAction(UIAlertAction(title: "Ок", style: .cancel, handler: nil))
             
             present(alertController, animated: true)
             
         }, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tableView.performBatchUpdates({
+                self.showIndicator()
+                NotesDataModel.shared.dataModel.remove(at: indexPath.row)
+                NotesDataModel.uploadNotesToFirebase { (_) in
+                    self.hideIndicator()
+                }
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            }, completion: nil)
+        }
     }
 }
 
@@ -153,6 +200,9 @@ extension NotesViewController: ImagePickerDelegate {
     func imagePickerDelegate(didSelect image: UIImage, delegatedForm: ImagePicker) {
         tableView.performBatchUpdates({
             guard let index = delegatedForm.cellIndex else { return }
+            if let cell = tableView.cellForRow(at: IndexPath(row: index, section: 0)) as? NoteCell {
+                cell.imageView?.image = image
+            }
             tableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
         }, completion: nil)
         imagePicker.dismiss()
@@ -165,7 +215,6 @@ extension NotesViewController: ImagePickerDelegate {
     }
 
     func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
-        // works only on real device (crash on simulator)
         if accessIsAllowed { presentImagePicker(sourceType: .camera) }
     }
     

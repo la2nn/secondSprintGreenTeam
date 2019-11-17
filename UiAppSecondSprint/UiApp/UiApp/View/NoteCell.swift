@@ -13,8 +13,17 @@ class NoteCell: UITableViewCell {
     public static let reuseId = "NoteCell"
     public var noteTextLabel = UILabel()
     private var downloadedImageView = UIImageView()
+    
+    public var imageURL: String? {
+        didSet {
+            guard imageURL != nil else { return }
+            setImageView()
+        }
+    }
+    
     public var downloadedImage: UIImage? {
         didSet {
+            guard downloadedImage != nil else { return }
             setImageView()
         }
     }
@@ -22,7 +31,7 @@ class NoteCell: UITableViewCell {
     var selfIndex: Int?
     var delegate: NoteCellDelegate?
     var addPhotoButton: UIButton?
-    var view: UIView!
+    var view = UIView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +42,7 @@ class NoteCell: UITableViewCell {
         
         self.backgroundColor = .clear
         
-        view = UIView(frame: self.frame)
+        view.frame = self.frame
         self.contentView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
@@ -46,7 +55,7 @@ class NoteCell: UITableViewCell {
         view.addSubview(noteTextLabel)
         noteTextLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        if downloadedImage == nil {
+        if imageURL == nil && downloadedImage == nil {
             setButton()
         } else {
             setImageView()
@@ -54,9 +63,10 @@ class NoteCell: UITableViewCell {
         noteTextLabel.backgroundColor = .clear
         noteTextLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 3).isActive = true
         noteTextLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant:  -3).isActive = true
-        noteTextLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        noteTextLabel.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5).isActive = true
+        noteTextLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.2).isActive = true
         
-        noteTextLabel.numberOfLines = 0
+        noteTextLabel.numberOfLines = 1
     }
     
     func setImageView() {
@@ -64,16 +74,51 @@ class NoteCell: UITableViewCell {
         downloadedImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(downloadedImageView)
         downloadedImageView.contentMode = .scaleAspectFit
-        downloadedImageView.image = downloadedImage
+        
+        let indicator = UIActivityIndicatorView(style: .gray)
+        downloadedImageView.addSubview(indicator)
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        indicator.centerXAnchor.constraint(equalTo: downloadedImageView.centerXAnchor).isActive = true
+        indicator.centerYAnchor.constraint(equalTo: downloadedImageView.centerYAnchor).isActive = true
+        indicator.startAnimating()
+        
+        if downloadedImage == nil {
+            downloadImage(url: imageURL!) { (image) in
+                DispatchQueue.main.async {
+                    NotesDataModel.shared.dataModel[self.selfIndex!].image = image
+                    self.downloadedImageView.image = image
+                    indicator.stopAnimating()
+                }
+            }
+        } else {
+            DispatchQueue.main.async {
+                indicator.stopAnimating()
+            }
+            self.downloadedImageView.image = downloadedImage
+        }
+        
         downloadedImageView.layer.cornerRadius = 10
+        
+//        downloadedImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
+//        downloadedImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
+//        downloadedImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+//        downloadedImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         
         downloadedImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
         downloadedImageView.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.9).isActive = true
-       // downloadedImageView.heightAnchor.constraint(equalToConstant: view.frame.height * 1).isActive = true
         downloadedImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        downloadedImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        
-    //   noteTextLabel.topAnchor.constraint(equalTo: downloadedImageView.bottomAnchor).isActive = true
+        downloadedImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
+    }
+    
+    func downloadImage(url: String, callback: @escaping (UIImage?) -> Void) {
+        let config = URLSessionConfiguration.default
+        var request = URLRequest(url: URL(string: url)!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 40)
+        request.addValue("image/png", forHTTPHeaderField: "Content-Type")
+                
+        URLSession(configuration: config).dataTask(with: request) { (data, response, error) in
+            guard let data = data else { callback(nil) ; return }
+            callback(UIImage(data: data))
+        }.resume()
     }
     
     func setButton() {
@@ -86,7 +131,7 @@ class NoteCell: UITableViewCell {
         button.layer.cornerRadius = 10
         button.addTarget(self, action: #selector(addPhoto), for: .touchUpInside)
         button.topAnchor.constraint(equalTo: view.topAnchor, constant: 10).isActive = true
-        button.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.3).isActive = true
+        button.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.4).isActive = true
         button.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6).isActive = true
         button.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
@@ -106,8 +151,8 @@ class NoteCell: UITableViewCell {
     
     override func updateConstraints() {
         
-        if downloadedImage == nil {
-            self.contentView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        if imageURL == nil || downloadedImage == nil {
+            self.contentView.heightAnchor.constraint(equalToConstant: 200).isActive = true
         } else {
             self.contentView.heightAnchor.constraint(equalToConstant: 200).isActive = true
             downloadedImageView.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.76).isActive = true
