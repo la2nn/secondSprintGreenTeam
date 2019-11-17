@@ -41,6 +41,14 @@ class SplashViewController: UIViewController {
         loginButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 28.0)
         loginButton.layer.cornerRadius = loginButton.frame.height / 5
         view.addSubview(loginButton)
+        
+        UIView.animate(withDuration: 0.6, animations: {
+            self.loginButton.transform = CGAffineTransform(scaleX: 0.6, y: 0.6)
+        }) { (_) in
+            UIView.animate(withDuration: 0.6) {
+                self.loginButton.transform = CGAffineTransform.identity
+            }
+        }
     }
     
     private func setGreetingsLabel() {
