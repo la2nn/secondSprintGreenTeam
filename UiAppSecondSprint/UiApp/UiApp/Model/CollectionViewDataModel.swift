@@ -8,16 +8,28 @@
 
 import Foundation
 
+struct Card: Decodable {
+    let idList: String
+    let name: String
+}
+
+struct List: Decodable {
+    let id: String
+    let name: String
+}
+
+
+struct ListWithCards: Codable {
+    let idList: String
+    let list: String
+    var cards: [String]
+}
+
 class CollectionViewDataModel {
-    
-    struct DataModel {
-        var columnName: String = "Имя колонны..."
-        var textForEachLabel: Array<String> = []
-    }
     
     static let shared = CollectionViewDataModel()
 
-    var dataModel: Array<DataModel> = []
+    var dataModel: Array<ListWithCards> = []
     
     private init() { }
 }

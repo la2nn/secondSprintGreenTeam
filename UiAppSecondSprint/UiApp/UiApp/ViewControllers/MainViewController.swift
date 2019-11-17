@@ -2,7 +2,7 @@
 import UIKit
 
 class MainViewController: UIViewController {
-
+    
     private var collectionView: UICollectionView!
     
     override func viewDidLoad() {
@@ -29,7 +29,7 @@ class MainViewController: UIViewController {
         collectionView.contentInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         collectionView.backgroundColor = #colorLiteral(red: 0.2951487303, green: 0.7470143437, blue: 0.4178136587, alpha: 1)
         collectionView.bounces = false
-                
+        
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(TasksColumnCell.self, forCellWithReuseIdentifier: TasksColumnCell.reuseId)
@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.isNavigationBarHidden = true
+
     }
 
 }
@@ -62,6 +63,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TasksColumnCell.reuseId, for: indexPath) as! TasksColumnCell
         cell.delegate = self
+        cell.listName = CollectionViewDataModel.shared.dataModel[indexPath.row].list
+        cell.cards = CollectionViewDataModel.shared.dataModel[indexPath.row].cards
+        cell.idList = CollectionViewDataModel.shared.dataModel[indexPath.row].idList
         return cell
     }
     
@@ -77,12 +81,11 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 extension MainViewController: CreateNewColumnCellDelegate {
-    func buttonDidTouch(item: CreateNewColumnCell) {
+    func buttonDidTouch() {
         collectionView.performBatchUpdates({
-            CollectionViewDataModel.shared.dataModel.append(CollectionViewDataModel.DataModel())
+            CollectionViewDataModel.shared.dataModel.append(ListWithCards(idList: "id", list: "Имя колонки", cards: ["Введите содержимое карточки"]))
             collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
                                                       section: 0)])
-            
         }, completion: nil)
     }
 }
