@@ -3,7 +3,7 @@ import UIKit
 
 class SignInViewController: UIViewController {
     
-    private let registerButtom = UIButton(type: .system)
+    let registerButton = UIButton(type: .system)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,21 +18,21 @@ class SignInViewController: UIViewController {
         navigationController?.navigationBar.topItem?.hidesBackButton = true
     }
     
-    private func setButton() {
-        registerButtom.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(registerButtom)
-        registerButtom.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15).isActive = true
-        registerButtom.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
-        registerButtom.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
-        registerButtom.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        registerButtom.layoutIfNeeded()
+    func setButton() {
+        registerButton.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(registerButton)
+        registerButton.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.15).isActive = true
+        registerButton.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.7).isActive = true
+        registerButton.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        registerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        registerButton.layoutIfNeeded()
         
-        registerButtom.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
-        registerButtom.setTitle("Нажмите на кнопку", for: .normal)
-        registerButtom.backgroundColor = #colorLiteral(red: 0.3126351237, green: 0.3320409656, blue: 1, alpha: 0.8470588235)
-        registerButtom.tintColor = .white
-        registerButtom.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21.0)
-        registerButtom.layer.cornerRadius = 10
+        registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
+        registerButton.setTitle("Нажмите на кнопку", for: .normal)
+        registerButton.backgroundColor = #colorLiteral(red: 0.3126351237, green: 0.3320409656, blue: 1, alpha: 0.8470588235)
+        registerButton.tintColor = .white
+        registerButton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 21.0)
+        registerButton.layer.cornerRadius = 10
     }
     
     @objc private func registerButtonPressed() {

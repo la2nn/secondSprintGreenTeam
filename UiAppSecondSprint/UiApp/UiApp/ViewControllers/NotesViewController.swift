@@ -59,7 +59,7 @@ class NotesViewController: UIViewController {
         view.bringSubviewToFront(loadingIndicator)
         showIndicator()
                
-        // GET Notes
+        /* GET Notes
         let config = URLSessionConfiguration.default
         var request = URLRequest(url: URL(string: "https://sprint-e1df8.firebaseio.com/notes.json?auth=7ptTMrMXzwLqEHn3PnhDwDpipWCXJnhwnVwGeacW")!, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 40)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -75,7 +75,7 @@ class NotesViewController: UIViewController {
                 print(error.localizedDescription)
             }
             self.hideIndicator()
-        }.resume()
+        }.resume() */
         
     }
 

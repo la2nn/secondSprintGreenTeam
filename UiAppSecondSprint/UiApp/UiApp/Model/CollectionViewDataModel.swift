@@ -28,6 +28,10 @@ struct ListWithCards: Codable {
 class CollectionViewDataModel {
     
     static let shared = CollectionViewDataModel()
+    
+    func getCountOfColumns() -> Int {
+        return dataModel.count
+    }
 
     var dataModel: Array<ListWithCards> = []
     

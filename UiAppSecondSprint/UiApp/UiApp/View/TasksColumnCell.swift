@@ -10,7 +10,7 @@ import UIKit
 
 class TasksColumnCell: UICollectionViewCell {
     
-    private var tableView = SelfSizedTableView()
+    var tableView = SelfSizedTableView()
     public static let reuseId = "ColumnCell"
     
     var idList: String!
@@ -76,7 +76,6 @@ class TasksColumnCell: UICollectionViewCell {
 
 extension TasksColumnCell: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return cards.count
     }
         
