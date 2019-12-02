@@ -5,6 +5,8 @@ class MainViewController: UIViewController {
     
     private var collectionView: UICollectionView!
     
+    var receivedColor: UIColor?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -87,6 +89,10 @@ extension MainViewController: CreateNewColumnCellDelegate {
             collectionView.insertItems(at: [IndexPath(row: CollectionViewDataModel.shared.dataModel.count - 1,
                                                       section: 0)])
         }, completion: nil)
+    }
+    
+    func backgroundColorDidChange(newColor: UIColor) {
+        receivedColor = newColor
     }
 }
 

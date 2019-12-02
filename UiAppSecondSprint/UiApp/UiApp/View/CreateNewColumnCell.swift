@@ -34,8 +34,13 @@ class CreateNewColumnCell: UICollectionReusableView {
         delegate?.buttonDidTouch(item: self)
     }
     
+    @objc private func backgroundColorDidChange() {
+        delegate?.backgroundColorDidChange?(newColor: self.backgroundColor!)
+    }
+    
 }
 
-protocol CreateNewColumnCellDelegate {
+@objc protocol CreateNewColumnCellDelegate {
     func buttonDidTouch(item: CreateNewColumnCell)
+    @objc optional func backgroundColorDidChange(newColor: UIColor)
 }

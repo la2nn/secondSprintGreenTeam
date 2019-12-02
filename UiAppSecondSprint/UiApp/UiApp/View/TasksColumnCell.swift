@@ -13,9 +13,15 @@ class TasksColumnCell: UICollectionViewCell {
     var tableView = SelfSizedTableView()
     public static let reuseId = "ColumnCell"
     
-    var idList: String!
-    var listName: String!
+    var idList = "some"
+    var listName = "some"
     var cards: [String]!
+    
+    static func initWith(cards: [String]) -> TasksColumnCell? {
+        let cell = TasksColumnCell(frame: .zero)
+        cell.cards = cards
+        return cell
+    }
     
     var delegate: TasksColumnCellDelegate?
     
@@ -93,11 +99,10 @@ extension TasksColumnCell: UITableViewDataSource {
     @objc private func createNewTask() {
         delegate?.getTextFromAlertController(completionHandler: { (str) in
             guard str != "" else { return }
-            guard let idList = self.idList, let listName = self.listName else { return }
             
             self.tableView.performBatchUpdates({
                 self.cards.append(str)
-                let listWithCard = ListWithCards(idList: idList, list: listName, cards: [str])
+                let listWithCard = ListWithCards(idList: self.idList, list: self.listName, cards: [str])
                 TrelloNetworking.shared.post(listWithCard)
                 self.tableView.insertRows(at: [IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)],
                                           with: .automatic)

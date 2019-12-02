@@ -10,6 +10,14 @@
 		013AEE4C237F4E37002E8BA5 /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
 		013B362E2381A4A7007F0CEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362D2381A4A7007F0CEA /* Extensions.swift */; };
 		013B36302381BDF0007F0CEA /* NoteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */; };
+		0145120E23958AE3007CDE25 /* NotesDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0145120D23958AE3007CDE25 /* NotesDataModelTests.swift */; };
+		01451210239590F8007CDE25 /* NotesViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0145120F239590F8007CDE25 /* NotesViewControllerTests.swift */; };
+		0145121223959550007CDE25 /* SignInViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0145121123959550007CDE25 /* SignInViewControllerTests.swift */; };
+		014512142395964D007CDE25 /* CollectionViewDataModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014512132395964D007CDE25 /* CollectionViewDataModelTests.swift */; };
+		01451216239596E4007CDE25 /* TasksColumnCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01451215239596E4007CDE25 /* TasksColumnCellTests.swift */; };
+		014512182395A31C007CDE25 /* URLRequestExtesnsionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014512172395A31C007CDE25 /* URLRequestExtesnsionTests.swift */; };
+		0145121A2395AD40007CDE25 /* DoubleExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 014512192395AD40007CDE25 /* DoubleExtensionTests.swift */; };
+		0145121C2395ADF5007CDE25 /* NoteCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0145121B2395ADF5007CDE25 /* NoteCellTests.swift */; };
 		01453B53237C8A59007C9FFC /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01453B52237C8A59007C9FFC /* ImagePicker.swift */; };
 		01633D96237B566C00FEC3C3 /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */; };
 		01633D97237B566C00FEC3C3 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */; };
@@ -19,7 +27,7 @@
 		01633DA2237B56F000FEC3C3 /* SelfSizedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA0237B56F000FEC3C3 /* SelfSizedUILabel.swift */; };
 		01633DA4237B5C8100FEC3C3 /* NotesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */; };
 		01633DA6237B5F3400FEC3C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA5237B5F3400FEC3C3 /* NoteCell.swift */; };
-		019E85F1238FF26300BEF412 /* UiAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E85F0238FF26300BEF412 /* UiAppTests.swift */; };
+		019E85F1238FF26300BEF412 /* CreateNewColumnCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E85F0238FF26300BEF412 /* CreateNewColumnCellTests.swift */; };
 		019E85F9239007F900BEF412 /* CollectionViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D9C237B56A300FEC3C3 /* CollectionViewDataModel.swift */; };
 		950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
 		950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
@@ -48,6 +56,14 @@
 		013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworking.swift; sourceTree = "<group>"; };
 		013B362D2381A4A7007F0CEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInfoViewController.swift; sourceTree = "<group>"; };
+		0145120D23958AE3007CDE25 /* NotesDataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataModelTests.swift; sourceTree = "<group>"; };
+		0145120F239590F8007CDE25 /* NotesViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewControllerTests.swift; sourceTree = "<group>"; };
+		0145121123959550007CDE25 /* SignInViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewControllerTests.swift; sourceTree = "<group>"; };
+		014512132395964D007CDE25 /* CollectionViewDataModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataModelTests.swift; sourceTree = "<group>"; };
+		01451215239596E4007CDE25 /* TasksColumnCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksColumnCellTests.swift; sourceTree = "<group>"; };
+		014512172395A31C007CDE25 /* URLRequestExtesnsionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestExtesnsionTests.swift; sourceTree = "<group>"; };
+		014512192395AD40007CDE25 /* DoubleExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtensionTests.swift; sourceTree = "<group>"; };
+		0145121B2395ADF5007CDE25 /* NoteCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCellTests.swift; sourceTree = "<group>"; };
 		01453B52237C8A59007C9FFC /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCell.swift; sourceTree = "<group>"; };
 		01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
@@ -58,7 +74,7 @@
 		01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesDataModel.swift; sourceTree = "<group>"; };
 		01633DA5237B5F3400FEC3C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		019E85EE238FF26300BEF412 /* UiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		019E85F0238FF26300BEF412 /* UiAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiAppTests.swift; sourceTree = "<group>"; };
+		019E85F0238FF26300BEF412 /* CreateNewColumnCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewColumnCellTests.swift; sourceTree = "<group>"; };
 		019E85F2238FF26300BEF412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		950DBD812374B03D00E6B6EF /* UiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950DBD842374B03D00E6B6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -152,7 +168,15 @@
 		019E85EF238FF26300BEF412 /* UiAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				019E85F0238FF26300BEF412 /* UiAppTests.swift */,
+				0145120D23958AE3007CDE25 /* NotesDataModelTests.swift */,
+				014512132395964D007CDE25 /* CollectionViewDataModelTests.swift */,
+				0145120F239590F8007CDE25 /* NotesViewControllerTests.swift */,
+				0145121123959550007CDE25 /* SignInViewControllerTests.swift */,
+				01451215239596E4007CDE25 /* TasksColumnCellTests.swift */,
+				019E85F0238FF26300BEF412 /* CreateNewColumnCellTests.swift */,
+				014512172395A31C007CDE25 /* URLRequestExtesnsionTests.swift */,
+				014512192395AD40007CDE25 /* DoubleExtensionTests.swift */,
+				0145121B2395ADF5007CDE25 /* NoteCellTests.swift */,
 				019E85F2238FF26300BEF412 /* Info.plist */,
 			);
 			path = UiAppTests;
@@ -292,8 +316,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				014512182395A31C007CDE25 /* URLRequestExtesnsionTests.swift in Sources */,
+				0145121223959550007CDE25 /* SignInViewControllerTests.swift in Sources */,
+				01451216239596E4007CDE25 /* TasksColumnCellTests.swift in Sources */,
+				0145121C2395ADF5007CDE25 /* NoteCellTests.swift in Sources */,
+				01451210239590F8007CDE25 /* NotesViewControllerTests.swift in Sources */,
 				019E85F9239007F900BEF412 /* CollectionViewDataModel.swift in Sources */,
-				019E85F1238FF26300BEF412 /* UiAppTests.swift in Sources */,
+				019E85F1238FF26300BEF412 /* CreateNewColumnCellTests.swift in Sources */,
+				0145121A2395AD40007CDE25 /* DoubleExtensionTests.swift in Sources */,
+				014512142395964D007CDE25 /* CollectionViewDataModelTests.swift in Sources */,
+				0145120E23958AE3007CDE25 /* NotesDataModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

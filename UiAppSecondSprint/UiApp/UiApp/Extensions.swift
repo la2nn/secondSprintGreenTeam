@@ -11,8 +11,7 @@ import Foundation
 import Foundation
 
 extension URLRequest {
-
-
+    
     public mutating func setMultipartFormData(_ parameters: [String: String], encoding: String.Encoding) throws {
 
         let makeRandom = { UInt32.random(in: (.min)...(.max)) }
@@ -71,8 +70,8 @@ extension Data {
         bcf.allowedUnits = [.useMB] // optional: restricts the units to MB only
         bcf.countStyle = .file
         let string = bcf.string(fromByteCount: Int64(self.count))
-        print("formatted result: \(string)")
-        return Double((Int64(self.count) / (1000 * 1000)))
+        //return Double((Int64(self.count) / (1024 * 1024)))
+        return Double(string.components(separatedBy: " ").first!)!
     }
 }
 

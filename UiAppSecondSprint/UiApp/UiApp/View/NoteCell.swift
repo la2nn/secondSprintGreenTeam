@@ -30,7 +30,7 @@ class NoteCell: UITableViewCell {
     
     var selfIndex: Int?
     var delegate: NoteCellDelegate?
-    var addPhotoButton: UIButton?
+    var photoButton: UIButton?
     var view = UIView()
     
     override func awakeFromNib() {
@@ -70,7 +70,7 @@ class NoteCell: UITableViewCell {
     }
     
     func setImageView() {
-        addPhotoButton?.isHidden = true
+        photoButton?.isHidden = true
         downloadedImageView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(downloadedImageView)
         downloadedImageView.contentMode = .scaleAspectFit
@@ -137,7 +137,7 @@ class NoteCell: UITableViewCell {
         
         noteTextLabel.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 0.6).isActive = true
         
-        self.addPhotoButton = button
+        self.photoButton = button
     }
     
     required init?(coder: NSCoder) {

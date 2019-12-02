@@ -37,6 +37,17 @@ class NotesDataModel {
             self.image = image
             self.imageURL = imageURL
         }
+        
+        static func initFromJson() -> CellDataModel? {
+            let cellData = try! JSONSerialization.data(withJSONObject: ["content" : "hello",
+                                                                        "imageURL" : "google.com"],
+                                                                        options: [])
+            return try? JSONDecoder().decode(NotesDataModel.CellDataModel.self, from: cellData)
+        }
+    }
+    
+    func hasData() -> Bool {
+        return !dataModel.isEmpty
     }
     
     static let shared = NotesDataModel()

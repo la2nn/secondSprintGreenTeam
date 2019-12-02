@@ -15,7 +15,7 @@ class NotesViewController: UIViewController {
     
     private lazy var imagePicker = ImagePicker()
     private weak var imageView: UIImageView!
-            
+                
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -134,7 +134,6 @@ extension NotesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = NoteCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: tableView.rowHeight))
-     //   let cell = tableView.dequeueReusableCell(withIdentifier: NoteCell.reuseId, for: indexPath) as! NoteCell
         if NotesDataModel.shared.dataModel[indexPath.row].image == nil {
             if let imageURL = NotesDataModel.shared.dataModel[indexPath.row].imageURL, imageURL != "nil", cell.imageURL == nil {
                 cell.imageURL = imageURL
