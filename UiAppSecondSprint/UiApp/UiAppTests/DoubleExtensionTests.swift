@@ -12,10 +12,13 @@ import XCTest
 class DoubleExtensionTests: XCTestCase {
     
     func testThatDataExtendedMethodReturnsRightDataSizeInMegabytes() {
-        let imageData = #imageLiteral(resourceName: "someImage").jpegData(compressionQuality: 0)!
+        // Arrange
+        guard let image = UIImage(named: "someImage"), let imageData = image.jpegData(compressionQuality: 0) else { return }
         
+        // Act
         let imageDataSizeInMB = imageData.getSizeInMB()
         
+        // Assert
         XCTAssertEqual(imageDataSizeInMB, 10.2)
     }
     

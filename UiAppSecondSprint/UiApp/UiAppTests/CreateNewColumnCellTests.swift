@@ -10,23 +10,19 @@ import XCTest
 @testable import UiApp
 
 class CreateNewColumnCellTests: XCTestCase {
-    
-    func testThatNewColumnCellHasFrame() {
-        let newColumn = CreateNewColumnCell()
-        
-        let frame = newColumn.frame
-        
-        XCTAssertNotEqual(frame, CGRect.zero)
-    }
-    
+
     func testThatNewColoumnCellDelegateWorks() {
+        // Arrange
         let cell = CreateNewColumnCell()
         let viewController = MainViewController()
         cell.delegate = viewController
+        guard let cellBackgroundColor = cell.backgroundColor else { return }
+            
+        // Act
+        cell.delegate?.backgroundColorDidChange?(newColor: cellBackgroundColor)
         
-        cell.delegate?.backgroundColorDidChange?(newColor: cell.backgroundColor!)
-        
-        XCTAssertEqual(viewController.receivedColor!, cell.backgroundColor!)
+        // Assert
+        XCTAssertEqual(viewController.receivedColor, cellBackgroundColor)
     }
     
 }

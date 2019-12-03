@@ -1,5 +1,5 @@
 //
-//  SelfSizedUILabelTests.swift
+//  URLRequestExtesnsionTests.swift
 //  UiAppTests
 //
 //  Created by Николай Спиридонов on 02.12.2019.
@@ -12,10 +12,13 @@ import XCTest
 class URLRequestExtesnsionTests: XCTestCase {
 
     func testThatURLSessionExtendedMethodCanSetMultipartData() {
+        // Arrange
         var request = URLRequest(url: URL(string: "google.com")!)
-        
+
+        // Act
         try? request.setMultipartFormData(["Login" : "TestUser"], encoding: .utf8)
-        
+
+        // Assert
         XCTAssertNotNil(request.httpBody)
     }
     

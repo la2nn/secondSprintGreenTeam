@@ -12,11 +12,16 @@ import XCTest
 class NoteCellTests: XCTestCase {
 
     func testThatDidSetMethodOfDownloadedImageHidesPhotoButton() {
+        // Arrange
+        guard let image = UIImage(named: "swifLogo") else { return }
         let cell = NoteCell(style: .default, reuseIdentifier: "any")
+        guard let photoButton = cell.photoButton else { return}
         
-        cell.downloadedImage = #imageLiteral(resourceName: "swiftLogo")
+        // Act (didSet method)
+        cell.downloadedImage = image
         
-        XCTAssertTrue(cell.photoButton!.isHidden)
+        // Assert
+        XCTAssertTrue(photoButton.isHidden)
     }
     
 }

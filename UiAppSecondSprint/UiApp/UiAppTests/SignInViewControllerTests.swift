@@ -12,18 +12,24 @@ import XCTest
 class SignInViewControllerTests: XCTestCase {
 
     func testThatSignInViewControllerHasSignInButton() {
+        // Arrange
         let signInVC = SignInViewController()
         
+        // Act
         signInVC.setButton()
        
+        // Assert
         XCTAssertTrue(signInVC.registerButton.titleLabel?.text == "Нажмите на кнопку")
     }
     
     func testThatSignInViewControllerHasRightTitle() {
+        // Arrange
         let signInVC = SignInViewController()
         
+        // Act
         signInVC.viewDidLoad()
         
+        // Assert
         XCTAssertEqual(signInVC.title, "Регистрация")
     }
 

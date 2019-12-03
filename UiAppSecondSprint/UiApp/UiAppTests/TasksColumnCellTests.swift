@@ -12,26 +12,36 @@ import XCTest
 class TasksColumnCellTests: XCTestCase {
     
     func testThatTasksColumnCellCanBeInitializedWithCards() {
+        // Arrange
         var tasksColumn: TasksColumnCell?
         
+        // Act
         tasksColumn = TasksColumnCell.initWith(cards: ["first", "seconds"])
         
+        // Assert
         XCTAssertNotNil(tasksColumn)
     }
 
    func testThatTableViewCellHasRightTextLabel() {
+        // Arrange
         let tasksColumn = TasksColumnCell.initWith(cards: ["тест1"])!
         
-        let cell = tasksColumn.tableView(tasksColumn.tableView, cellForRowAt: IndexPath(row: 0, section: 0)) as! TasksTableViewCell
+        // Act
+        let cell = tasksColumn.tableView(tasksColumn.tableView,
+                                         cellForRowAt: IndexPath(row: 0, section: 0)) as? TasksTableViewCell
         
-        XCTAssertEqual(cell.infoLabel.text!, "тест1")
+        // Assert
+        XCTAssertEqual(cell?.infoLabel.text, "тест1")
     }
     
     func testThatTableViewHasRightAmountOfCells() {
+        // Arrange
         let tasksColumn = TasksColumnCell.initWith(cards: ["тест1", "тест2", "тест3", "тест4", "тест5"])!
         
+        // Act
         let count = tasksColumn.tableView(tasksColumn.tableView, numberOfRowsInSection: 0)
         
+        // Assert
         XCTAssertEqual(count, 5)
     }
 

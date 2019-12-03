@@ -12,13 +12,15 @@ import XCTest
 class NotesViewControllerTests: XCTestCase {
 
     func testThatControllerHasRightAmountOfNotes() {
+        // Arrange
         let notesVC = NotesViewController()
         NotesDataModel.shared.dataModel = [NotesDataModel.CellDataModel(text: "1"),
                                            NotesDataModel.CellDataModel(text: "2"),
                                            NotesDataModel.CellDataModel(text: "3")]
-        
+        // Act
         notesVC.viewDidLoad()
         
+        // Assert
         XCTAssertEqual(notesVC.tableView.numberOfRows(inSection: 0), 3)
     }
     

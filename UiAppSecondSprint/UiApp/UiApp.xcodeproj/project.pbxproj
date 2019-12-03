@@ -29,6 +29,26 @@
 		01633DA6237B5F3400FEC3C3 /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA5237B5F3400FEC3C3 /* NoteCell.swift */; };
 		019E85F1238FF26300BEF412 /* CreateNewColumnCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019E85F0238FF26300BEF412 /* CreateNewColumnCellTests.swift */; };
 		019E85F9239007F900BEF412 /* CollectionViewDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D9C237B56A300FEC3C3 /* CollectionViewDataModel.swift */; };
+		01DDE58B2396981B00B3CF8A /* NotesDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA3237B5C8100FEC3C3 /* NotesDataModel.swift */; };
+		01DDE58D2396983800B3CF8A /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA623760A8300E6B6EF /* NotesViewController.swift */; };
+		01DDE58E2396984300B3CF8A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD982374B19D00E6B6EF /* LoginViewController.swift */; };
+		01DDE5912396985C00B3CF8A /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362D2381A4A7007F0CEA /* Extensions.swift */; };
+		01DDE5932396988800B3CF8A /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9C2374CF9900E6B6EF /* SignInViewController.swift */; };
+		01DDE5942396988800B3CF8A /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9E2374CFAF00E6B6EF /* SignUpViewController.swift */; };
+		01DDE5952396988800B3CF8A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD9A2374B1AD00E6B6EF /* MainViewController.swift */; };
+		01DDE5962396988800B3CF8A /* NoteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */; };
+		01DDE5972396988800B3CF8A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBDA02374E2A300E6B6EF /* SettingsViewController.swift */; };
+		01DDE5982396989300B3CF8A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01453B52237C8A59007C9FFC /* ImagePicker.swift */; };
+		01DDE59A2396989300B3CF8A /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD962374B18A00E6B6EF /* SplashViewController.swift */; };
+		01DDE59D2396989C00B3CF8A /* SelfSizedTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D9F237B56F000FEC3C3 /* SelfSizedTableView.swift */; };
+		01DDE59E2396989C00B3CF8A /* SelfSizedUILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA0237B56F000FEC3C3 /* SelfSizedUILabel.swift */; };
+		01DDE59F2396989C00B3CF8A /* CreateNewColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D93237B566C00FEC3C3 /* CreateNewColumnCell.swift */; };
+		01DDE5A02396989C00B3CF8A /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D94237B566C00FEC3C3 /* TasksTableViewCell.swift */; };
+		01DDE5A12396989C00B3CF8A /* TasksColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633D95237B566C00FEC3C3 /* TasksColumnCell.swift */; };
+		01DDE5A22396989C00B3CF8A /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01633DA5237B5F3400FEC3C3 /* NoteCell.swift */; };
+		01DDE5A3239698A700B3CF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
+		01DDE5A4239698E100B3CF8A /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
+		01DDE5A523969B7300B3CF8A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
 		950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
 		950DBD872374B03D00E6B6EF /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
 		950DBD8C2374B04200E6B6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950DBD8B2374B04200E6B6EF /* Assets.xcassets */; };
@@ -266,7 +286,6 @@
 				TargetAttributes = {
 					019E85ED238FF26300BEF412 = {
 						CreatedOnToolsVersion = 11.2.1;
-						TestTargetID = 950DBD802374B03D00E6B6EF;
 					};
 					950DBD802374B03D00E6B6EF = {
 						CreatedOnToolsVersion = 10.3;
@@ -316,15 +335,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01DDE5952396988800B3CF8A /* MainViewController.swift in Sources */,
+				01DDE58E2396984300B3CF8A /* LoginViewController.swift in Sources */,
+				01DDE5A02396989C00B3CF8A /* TasksTableViewCell.swift in Sources */,
 				014512182395A31C007CDE25 /* URLRequestExtesnsionTests.swift in Sources */,
+				01DDE5A3239698A700B3CF8A /* AppDelegate.swift in Sources */,
+				01DDE5962396988800B3CF8A /* NoteInfoViewController.swift in Sources */,
 				0145121223959550007CDE25 /* SignInViewControllerTests.swift in Sources */,
 				01451216239596E4007CDE25 /* TasksColumnCellTests.swift in Sources */,
 				0145121C2395ADF5007CDE25 /* NoteCellTests.swift in Sources */,
+				01DDE59D2396989C00B3CF8A /* SelfSizedTableView.swift in Sources */,
 				01451210239590F8007CDE25 /* NotesViewControllerTests.swift in Sources */,
+				01DDE5932396988800B3CF8A /* SignInViewController.swift in Sources */,
+				01DDE5A12396989C00B3CF8A /* TasksColumnCell.swift in Sources */,
 				019E85F9239007F900BEF412 /* CollectionViewDataModel.swift in Sources */,
+				01DDE58D2396983800B3CF8A /* NotesViewController.swift in Sources */,
 				019E85F1238FF26300BEF412 /* CreateNewColumnCellTests.swift in Sources */,
+				01DDE59F2396989C00B3CF8A /* CreateNewColumnCell.swift in Sources */,
+				01DDE5972396988800B3CF8A /* SettingsViewController.swift in Sources */,
 				0145121A2395AD40007CDE25 /* DoubleExtensionTests.swift in Sources */,
+				01DDE5A22396989C00B3CF8A /* NoteCell.swift in Sources */,
+				01DDE5A523969B7300B3CF8A /* RootViewController.swift in Sources */,
+				01DDE59E2396989C00B3CF8A /* SelfSizedUILabel.swift in Sources */,
+				01DDE5942396988800B3CF8A /* SignUpViewController.swift in Sources */,
+				01DDE5A4239698E100B3CF8A /* TrelloNetworking.swift in Sources */,
+				01DDE59A2396989300B3CF8A /* SplashViewController.swift in Sources */,
 				014512142395964D007CDE25 /* CollectionViewDataModelTests.swift in Sources */,
+				01DDE5912396985C00B3CF8A /* Extensions.swift in Sources */,
+				01DDE5982396989300B3CF8A /* ImagePicker.swift in Sources */,
+				01DDE58B2396981B00B3CF8A /* NotesDataModel.swift in Sources */,
 				0145120E23958AE3007CDE25 /* NotesDataModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -382,7 +421,6 @@
 		019E85F5238FF26300BEF412 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99D42X5Q4Q;
 				INFOPLIST_FILE = UiAppTests/Info.plist;
@@ -396,14 +434,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UiApp.app/UiApp";
 			};
 			name = Debug;
 		};
 		019E85F6238FF26300BEF412 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 99D42X5Q4Q;
 				INFOPLIST_FILE = UiAppTests/Info.plist;
@@ -417,7 +453,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/UiApp.app/UiApp";
 			};
 			name = Release;
 		};

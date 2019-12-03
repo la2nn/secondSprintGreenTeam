@@ -12,10 +12,13 @@ import XCTest
 class CollectionViewDataModelTests: XCTestCase {
 
     func testThatCollectionViewDataModelHasNoData() {
+        // Arrange
         let dataModel = CollectionViewDataModel.shared
     
+        // Act
         let amountOfColumns = dataModel.getCountOfColumns()
         
+        // Assert
         XCTAssertEqual(amountOfColumns, 0)
     }
 
