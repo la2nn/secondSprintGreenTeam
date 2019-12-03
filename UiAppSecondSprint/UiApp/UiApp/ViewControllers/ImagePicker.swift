@@ -19,7 +19,7 @@ protocol ImagePickerDelegate  {
 
 class ImagePicker: NSObject {
     
-    private weak var controller: UIImagePickerController?
+    weak var controller: UIImagePickerController?
     var cellIndex: Int?
     var delegate: ImagePickerDelegate?
     var imageIndicator = UIActivityIndicatorView(style: .gray)

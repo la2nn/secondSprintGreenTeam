@@ -15,7 +15,7 @@ class NoteCellTests: XCTestCase {
         // Arrange
         guard let image = UIImage(named: "swifLogo") else { return }
         let cell = NoteCell(style: .default, reuseIdentifier: "any")
-        guard let photoButton = cell.photoButton else { return}
+        guard let photoButton = cell.photoButton else { return }
         
         // Act (didSet method)
         cell.downloadedImage = image
