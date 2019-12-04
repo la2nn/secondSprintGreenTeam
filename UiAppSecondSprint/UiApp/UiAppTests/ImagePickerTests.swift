@@ -32,16 +32,21 @@ class ImagePickerTests: XCTestCase {
     
     func testThatImagePickerReturnsImageToDelegate() {
         // Arrange
-        guard let image = UIImage(named: "swiftLogo") else { return }
-        let imagePicker = ImagePicker()
-        let imagePickerDelegate = MockImagePicker()
-        imagePicker.delegate = imagePickerDelegate
-       
-        // Act
-        imagePicker.delegate?.imagePickerDelegate(didSelect: image, delegatedForm: imagePicker)
-        
-        // Assert
-        XCTAssertNotNil(imagePickerDelegate.recievedImage)
+        if let imageURL = Bundle(for: type(of: self)).url(forResource: "wylsa", withExtension: "png"),
+            let imageData = try? Data(contentsOf: imageURL),
+            let image = UIImage(data: imageData) {
+            let imagePicker = ImagePicker()
+            let imagePickerDelegate = MockImagePicker()
+            imagePicker.delegate = imagePickerDelegate
+            
+            // Act
+            imagePicker.delegate?.imagePickerDelegate(didSelect: image, delegatedForm: imagePicker)
+            
+            // Assert
+            XCTAssertNotNil(imagePickerDelegate.recievedImage)
+        } else {
+            XCTFail()
+        }
     }
 
 }

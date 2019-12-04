@@ -10,15 +10,15 @@ import XCTest
 
 class TrelloNetworkingTests: XCTestCase {
 
-    class MockTrelloNetworkong: TrelloNetworking {
+    class MockTrelloNetworking: TrelloNetworking {
         override func get(_ callback: @escaping (Bool) -> Void) {
             callback(true)
         }
     }
     
-    func testThatFuncCallsCallback() {
+    func testThatGetFuncCallsCallback() {
         // Arrange
-        let trello = TrelloNetworking()
+        let trello = MockTrelloNetworking()
         
         // Act
         trello.get { (result) in

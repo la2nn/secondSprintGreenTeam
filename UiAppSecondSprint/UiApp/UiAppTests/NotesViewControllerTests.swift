@@ -29,14 +29,19 @@ class NotesViewControllerTests: XCTestCase {
         super.setUp()
     }
     
-    struct MockNotesData {
-        var notes = ["one", "two", "three", "four"]
-        init() { }
+    class MockNotesViewController: NotesViewController {
+        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            return 4
+        }
+        
+        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            return UITableViewCell()
+        }
     }
     
-    func testThatTableViewHasRightAmountOfNotesWithControllerInitialize() {
+    func testThatTableViewHasRightAmountOfNotes() {
         // Arrange
-        let notesVC = NotesViewController(notes: MockNotesData().notes)
+        let notesVC = MockNotesViewController()
         
         // Act
         notesVC.viewDidLoad()
@@ -44,6 +49,5 @@ class NotesViewControllerTests: XCTestCase {
         // Assert
         XCTAssertEqual(notesVC.tableView.numberOfRows(inSection: 0), 4)
     }
-    
     
 }

@@ -13,13 +13,17 @@ class DoubleExtensionTests: XCTestCase {
     
     func testThatDataExtendedMethodReturnsRightDataSizeInMegabytes() {
         // Arrange
-        guard let image = UIImage(named: "someImage"), let imageData = image.jpegData(compressionQuality: 0) else { return }
-        
-        // Act
-        let imageDataSizeInMB = imageData.getSizeInMB()
-        
-        // Assert
-        XCTAssertEqual(imageDataSizeInMB, 10.2)
+        if let imageURL = Bundle(for: type(of: self)).url(forResource: "test", withExtension: "jpg"),
+           let imageData = try? Data(contentsOf: imageURL) {
+            
+            // Act
+            let imageDataSizeInMB = imageData.getSizeInMB()
+            
+            // Assert
+            XCTAssertEqual(imageDataSizeInMB, 10.2)
+        } else {
+            XCTFail()
+        }
     }
     
 }

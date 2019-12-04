@@ -71,7 +71,7 @@ extension Data {
         bcf.countStyle = .file
         let string = bcf.string(fromByteCount: Int64(self.count))
         //return Double((Int64(self.count) / (1024 * 1024)))
-        return Double(string.components(separatedBy: " ").first!)!
+        return Double(string.components(separatedBy: " ").first!.replacingOccurrences(of: ",", with: "."))!
     }
 }
 
