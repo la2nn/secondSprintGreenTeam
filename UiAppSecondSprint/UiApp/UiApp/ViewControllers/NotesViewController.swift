@@ -16,8 +16,6 @@ class NotesViewController: UIViewController {
     private lazy var imagePicker = ImagePicker()
     private weak var imageView: UIImageView!
     
-    var notes: [String]?
-                
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -86,11 +84,6 @@ class NotesViewController: UIViewController {
         self.tabBarItem = UITabBarItem(title: "", image: UIImage(named: "notes"), tag: 1)
     }
     
-    init(notes: [String]) {
-        super.init(nibName: nil, bundle: nil)
-        self.notes = notes
-    }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -136,14 +129,12 @@ class NotesViewController: UIViewController {
 
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notes == nil ? NotesDataModel.shared.dataModel.count : notes!.count
+        NotesDataModel.shared.dataModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = NoteCell(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: tableView.rowHeight))
-        if let notes = notes {
-            cell.noteTextLabel.text = notes[indexPath.row]
-        } else if NotesDataModel.shared.dataModel[indexPath.row].image == nil {
+        if NotesDataModel.shared.dataModel[indexPath.row].image == nil {
             if let imageURL = NotesDataModel.shared.dataModel[indexPath.row].imageURL, imageURL != "nil", cell.imageURL == nil {
                 cell.imageURL = imageURL
                 cell.noteTextLabel.text = NotesDataModel.shared.dataModel[indexPath.row].text

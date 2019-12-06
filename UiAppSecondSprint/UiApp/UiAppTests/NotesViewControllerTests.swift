@@ -29,25 +29,4 @@ class NotesViewControllerTests: XCTestCase {
         super.setUp()
     }
     
-    class MockNotesViewController: NotesViewController {
-        override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 4
-        }
-        
-        override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return UITableViewCell()
-        }
-    }
-    
-    func testThatTableViewHasRightAmountOfNotes() {
-        // Arrange
-        let notesVC = MockNotesViewController()
-        
-        // Act
-        notesVC.viewDidLoad()
-        
-        // Assert
-        XCTAssertEqual(notesVC.tableView.numberOfRows(inSection: 0), 4)
-    }
-    
 }

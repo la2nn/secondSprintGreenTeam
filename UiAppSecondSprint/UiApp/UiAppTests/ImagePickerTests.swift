@@ -32,9 +32,7 @@ class ImagePickerTests: XCTestCase {
     
     func testThatImagePickerReturnsImageToDelegate() {
         // Arrange
-        if let imageURL = Bundle(for: type(of: self)).url(forResource: "wylsa", withExtension: "png"),
-            let imageData = try? Data(contentsOf: imageURL),
-            let image = UIImage(data: imageData) {
+        if let image = UIImage(named: "swiftLogo", in: Bundle(for: RootViewController.self), with: nil) {
             let imagePicker = ImagePicker()
             let imagePickerDelegate = MockImagePicker()
             imagePicker.delegate = imagePickerDelegate

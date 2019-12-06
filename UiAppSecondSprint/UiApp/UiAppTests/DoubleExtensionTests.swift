@@ -13,8 +13,8 @@ class DoubleExtensionTests: XCTestCase {
     
     func testThatDataExtendedMethodReturnsRightDataSizeInMegabytes() {
         // Arrange
-        if let imageURL = Bundle(for: type(of: self)).url(forResource: "test", withExtension: "jpg"),
-           let imageData = try? Data(contentsOf: imageURL) {
+        if let image = UIImage(named: "someImage", in: Bundle(for: RootViewController.self), with: nil),
+           let imageData = image.jpegData(compressionQuality: 0) {
             
             // Act
             let imageDataSizeInMB = imageData.getSizeInMB()

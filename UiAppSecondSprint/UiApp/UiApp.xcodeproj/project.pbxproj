@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		013926A8239817A0007B6CD1 /* wylsa.png in Resources */ = {isa = PBXBuildFile; fileRef = 013926A7239817A0007B6CD1 /* wylsa.png */; };
-		013926AB239819F6007B6CD1 /* test.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 013926AA239819F6007B6CD1 /* test.jpg */; };
 		013AEE4C237F4E37002E8BA5 /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
 		013B362E2381A4A7007F0CEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362D2381A4A7007F0CEA /* Extensions.swift */; };
 		013B36302381BDF0007F0CEA /* NoteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */; };
@@ -77,8 +75,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		013926A7239817A0007B6CD1 /* wylsa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wylsa.png; sourceTree = "<group>"; };
-		013926AA239819F6007B6CD1 /* test.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = test.jpg; sourceTree = "<group>"; };
 		013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworking.swift; sourceTree = "<group>"; };
 		013B362D2381A4A7007F0CEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInfoViewController.swift; sourceTree = "<group>"; };
@@ -136,15 +132,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		013926A9239819E5007B6CD1 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				013926AA239819F6007B6CD1 /* test.jpg */,
-				013926A7239817A0007B6CD1 /* wylsa.png */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		013AEE4A237F4DEE002E8BA5 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +191,6 @@
 		019E85EF238FF26300BEF412 /* UiAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				013926A9239819E5007B6CD1 /* Images */,
 				0145120D23958AE3007CDE25 /* NotesDataModelTests.swift */,
 				014512132395964D007CDE25 /* CollectionViewDataModelTests.swift */,
 				0145120F239590F8007CDE25 /* NotesViewControllerTests.swift */,
@@ -335,8 +321,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				01DDE5AA2397950C00B3CF8A /* Assets.xcassets in Resources */,
-				013926AB239819F6007B6CD1 /* test.jpg in Resources */,
-				013926A8239817A0007B6CD1 /* wylsa.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

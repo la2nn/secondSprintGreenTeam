@@ -13,9 +13,7 @@ class NoteCellTests: XCTestCase {
     
     func testThatDidSetMethodOfDownloadedImageHidesPhotoButton() {
         // Arrange
-        if let imageURL = Bundle(for: type(of: self)).url(forResource: "wylsa", withExtension: "png"),
-            let imageData = try? Data(contentsOf: imageURL),
-            let image = UIImage(data: imageData) {
+        if let image = UIImage(named: "someImage", in: Bundle(for: RootViewController.self), with: nil) {
             let cell = NoteCell(style: .default, reuseIdentifier: "any")
             guard let photoButton = cell.photoButton else { XCTFail() ; return }
             
@@ -27,6 +25,27 @@ class NoteCellTests: XCTestCase {
         } else {
             XCTFail()
         }
-        
     }
+    
+    class MockNotesViewController: NoteCellDelegate {
+        var cellIndex: Int?
+        
+        func addPhotoButtonPressed(cellIndex: Int?) {
+            self.cellIndex = cellIndex
+        }
+    }
+    
+    func testThatNoteCellDelegateWorks() {
+        // Arrange
+        let notesVC = MockNotesViewController()
+        let noteCell = NoteCell()
+        noteCell.delegate = notesVC
+        
+        // Act
+        noteCell.delegate?.addPhotoButtonPressed(cellIndex: 10)
+        
+        // Assert
+        XCTAssertEqual(notesVC.cellIndex, 10)
+    }
+    
 }
