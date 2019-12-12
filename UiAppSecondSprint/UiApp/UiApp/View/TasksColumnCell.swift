@@ -17,6 +17,10 @@ class TasksColumnCell: UICollectionViewCell {
     var listName = "some"
     var cards: [String]!
     
+    var fetchDataSource: TrelloFetchDataProtocol?
+    var fetchedLists: [List]?
+    var fetchedCards: [Card]?
+    
     static func initWith(cards: [String]) -> TasksColumnCell? {
         let cell = TasksColumnCell(frame: .zero)
         cell.cards = cards
@@ -58,6 +62,18 @@ class TasksColumnCell: UICollectionViewCell {
         tableView.dataSource = self
         
         tableView.register(TasksTableViewCell.self, forCellReuseIdentifier: TasksTableViewCell.tableCellReuseId)
+    }
+    
+    func fetchLists() {
+        self.fetchDataSource?.getLists({ lists in
+            self.fetchedLists = lists
+        })
+    }
+    
+    func fetchCards() {
+        self.fetchDataSource?.getCards({ cards in
+            self.fetchedCards = cards
+        })
     }
     
     required init?(coder: NSCoder) {
@@ -103,7 +119,7 @@ extension TasksColumnCell: UITableViewDataSource {
             self.tableView.performBatchUpdates({
                 self.cards.append(str)
                 let listWithCard = ListWithCards(idList: self.idList, list: self.listName, cards: [str])
-                TrelloNetworking.shared.post(listWithCard)
+                TrelloNetworking().post(listWithCard)
                 self.tableView.insertRows(at: [IndexPath(row: self.tableView.numberOfRows(inSection: 0), section: 0)],
                                           with: .automatic)
             }, completion: { _ in

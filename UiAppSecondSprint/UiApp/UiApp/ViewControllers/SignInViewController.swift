@@ -52,22 +52,5 @@ class SignInViewController: UIViewController {
         loadingIndicator.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
         loadingIndicator.center = view.center
         loadingIndicator.startAnimating()
-        
-        TrelloNetworking.shared.get { (result) in
-            if result == true {
-                DispatchQueue.main.async {
-                    loadingIndicator.stopAnimating()
-                    self.navigationController?.pushViewController(tabBarController, animated: true)
-                }
-            } else {
-                print("bad news")
-                DispatchQueue.main.async {
-                    loadingIndicator.color = .red
-                }
-            }
-        }
-    
-        
     }
-    
 }

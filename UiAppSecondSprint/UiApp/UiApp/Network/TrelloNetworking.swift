@@ -8,120 +8,93 @@
 
 import Foundation
 
-class TrelloNetworking {
+class TrelloNetworking: TrelloFetchDataProtocol, TrelloUploadDataProtocol {
     
-    private var arrayListWithCards: [ListWithCards] = []
-
-    private var cortege = (false, false) {
-        didSet {
-            if self.cortege == (true, true) {
-                for i in self.lists {
-                    var listCard = ListWithCards(idList: i.id, list: i.name, cards: [])
-                    for j in self.cards {
-                        if j.idList == i.id {
-                            listCard.cards.append(j.name)
-                        }
-                    }
-                    arrayListWithCards.append(listCard)
-                    
-                }
-            }
-            CollectionViewDataModel.shared.dataModel = arrayListWithCards
-            print(arrayListWithCards)
+    private enum UrlParts: String {
+        case idBoard = "2XJ1X5mg"
+        case apiToken = "375c9d91cf52dd50f5feb1c2b7ca76fdd2ac9f621ddaf08e3686ee1d5e7a650c"
+        case apiKey = "28e8753e7b1cb1c96af05f7e48fd6748"
+        
+        static var trelloCardLink: String {
+            return """
+                        https://api.trello.com/1/boards/\(idBoard.rawValue)/
+                                cards?fields=idList,name&key=\(apiKey.rawValue)
+                                &token=\(apiToken.rawValue)
+                   """
+        }
+        
+        static var trelloListLink: String {
+            return """
+                       https://api.trello.com/1/boards/\(idBoard.rawValue)/
+                       lists?fields=name&key=\(apiKey.rawValue)
+                       &token=\(apiToken.rawValue)
+                   """
         }
     }
-    private let idBoard = "2XJ1X5mg"
-    private let apiToken: String = "375c9d91cf52dd50f5feb1c2b7ca76fdd2ac9f621ddaf08e3686ee1d5e7a650c"
-    private let apiKey: String = "28e8753e7b1cb1c96af05f7e48fd6748"
-     var trelloCardLink: String {
-        return "https://api.trello.com/1/boards/\(idBoard)/cards?fields=idList,name&key=\(apiKey)&token=\(apiToken)"
-    }
 
-    private var trelloListLink: String {
-        return "https://api.trello.com/1/boards/\(idBoard)/lists?fields=name&key=\(apiKey)&token=\(apiToken)"
-    }
-    
-    
-
-    private var cards: [Card] = []
-    private var lists: [List] = []
-
-    public static let shared = TrelloNetworking()
-
-    func get(_ callback: @escaping (Bool) -> Void) {
-        // MARK: GET ЗАПРОС
-        let config = URLSessionConfiguration.default
-        let session = URLSession(configuration: config)
-        
-        let url2 = URL(string: trelloListLink)!
-              let urlRequest2 = URLRequest(url: url2, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 1)
-              
-              let task2 = session.dataTask(with: urlRequest2, completionHandler: {(data, response, error)
-                  in
-                  do {
-                      let posts = try JSONDecoder().decode([List].self, from: data!)
-                      self.lists = Array(posts)
-                      self.cortege.0 = true
-                      callback(true)
-                  } catch {
-                      callback(false)
-                  }
-              })
-        
-        let url1 = URL(string: trelloCardLink)!
-        let urlRequest1 = URLRequest(url: url1, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 1)
-        
-        let task1 = session.dataTask(with: urlRequest1, completionHandler: {(data, response, error)
-            in
-            do {
-                let posts = try JSONDecoder().decode([Card].self, from: data!)
-                self.cards = Array(posts)
-                self.cortege.1 = true
-                task2.resume()
-
-            } catch {
-                print(error)
-            }
-        })
-        task1.resume()
-        
-    }
-    // MARK: POST ЗАПРОС
-    func post(_ card: ListWithCards) {
-            
-            guard card.idList != "" else { return }
-        
-            guard let uploadData = try? JSONEncoder().encode(card) else { return }
-            
-        let urlString = "https://api.trello.com/1/cards?name=\(card.cards[0])&idList=\(card.idList)&keepFromSource=all&key=\(apiKey)&token=\(apiToken)".addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed)!
-            
-            let myUrl = URL(string: urlString)!
-            print(myUrl.absoluteString)
-            
-            var request = URLRequest(url: myUrl)
-            request.httpMethod = "POST"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            
-            let task = URLSession.shared.uploadTask(with: request, from: uploadData) { data, response, error in
-                if let error = error {
-                    print ("error: \(error)")
-                    return
-                }
-                guard let response = response as? HTTPURLResponse,
-                    (200...299).contains(response.statusCode) else {
-                        print ("server error")
-                        return
-                }
-                if let mimeType = response.mimeType,
-                    mimeType == "application/json",
-                    let data = data,
-                    let dataString = String(data: data, encoding: .utf8) {
-                    print ("got data: \(dataString)")
-                }
-            }
-            task.resume()
+    func getLists(_ callback: @escaping ([List]?) -> Void) {
+        guard let postsUrl = URL(string: UrlParts.trelloListLink) else {
+            callback(nil)
             return
         }
+        
+        let request = URLRequest(url: postsUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data, let posts = try? JSONDecoder().decode([List].self, from: data) {
+                callback(posts)
+            } else {
+                callback(nil)
+            }
+        }.resume()
+    }
+    
+    func getCards(_ callback: @escaping ([Card]?) -> Void) {
+        guard let postsUrl = URL(string: UrlParts.trelloCardLink) else {
+            callback(nil)
+            return
+        }
+        
+        let request = URLRequest(url: postsUrl, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 60)
+        
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data, let cards = try? JSONDecoder().decode([Card].self, from: data) {
+                callback(cards)
+            } else {
+                callback(nil)
+            }
+        }.resume()
+    }
+    
+    func post(_ card: ListWithCards) {
+        guard !card.idList.isEmpty,
+            let uploadData = try? JSONEncoder().encode(card),
+            let urlString = """
+                https://api.trello.com/1/cards?name=\(card.cards[0])
+                &idList=\(card.idList)
+                &keepFromSource=all
+                &key=\(UrlParts.apiKey.rawValue)
+                &token=\(UrlParts.apiToken.rawValue)
+                """.addingPercentEncoding(withAllowedCharacters: CharacterSet.urlQueryAllowed),
+            let url = URL(string: urlString)
+            else {
+                return
+            }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        URLSession.shared.uploadTask(with: request, from: uploadData).resume()
+    }
     
 }
 
+protocol TrelloFetchDataProtocol {
+    func getLists(_ callback: @escaping ([List]?) -> Void)
+    func getCards(_ callback: @escaping ([Card]?) -> Void)
+}
+
+protocol TrelloUploadDataProtocol {
+    func post(_ card: ListWithCards)
+}

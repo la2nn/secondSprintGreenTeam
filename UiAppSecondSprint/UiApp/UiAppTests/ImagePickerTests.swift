@@ -7,10 +7,11 @@
 //
 
 import XCTest
+@testable import UiApp
 
 class ImagePickerTests: XCTestCase {
     
-    class MockImagePicker: ImagePickerDelegate {
+    class SpyImagePicker: ImagePickerDelegate {
         var recievedImage: UIImage?
         
         func imagePickerDelegate(canUseCamera accessIsAllowed: Bool, delegatedForm: ImagePicker) {
@@ -34,7 +35,7 @@ class ImagePickerTests: XCTestCase {
         // Arrange
         if let image = UIImage(named: "swiftLogo", in: Bundle(for: RootViewController.self), with: nil) {
             let imagePicker = ImagePicker()
-            let imagePickerDelegate = MockImagePicker()
+            let imagePickerDelegate = SpyImagePicker()
             imagePicker.delegate = imagePickerDelegate
             
             // Act

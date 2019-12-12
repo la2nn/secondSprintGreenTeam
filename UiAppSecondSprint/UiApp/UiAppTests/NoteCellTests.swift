@@ -26,26 +26,4 @@ class NoteCellTests: XCTestCase {
             XCTFail()
         }
     }
-    
-    class MockNotesViewController: NoteCellDelegate {
-        var cellIndex: Int?
-        
-        func addPhotoButtonPressed(cellIndex: Int?) {
-            self.cellIndex = cellIndex
-        }
-    }
-    
-    func testThatNoteCellDelegateWorks() {
-        // Arrange
-        let notesVC = MockNotesViewController()
-        let noteCell = NoteCell()
-        noteCell.delegate = notesVC
-        
-        // Act
-        noteCell.delegate?.addPhotoButtonPressed(cellIndex: 10)
-        
-        // Assert
-        XCTAssertEqual(notesVC.cellIndex, 10)
-    }
-    
 }

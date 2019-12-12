@@ -10,17 +10,6 @@ import XCTest
 @testable import UiApp
 
 class TasksColumnCellTests: XCTestCase {
-    
-    func testThatTasksColumnCellCanBeInitializedWithCards() {
-        // Arrange
-        var tasksColumn: TasksColumnCell?
-        
-        // Act
-        tasksColumn = TasksColumnCell.initWith(cards: ["first", "seconds"])
-        
-        // Assert
-        XCTAssertNotNil(tasksColumn)
-    }
 
    func testThatTableViewCellHasRightTextLabel() {
         // Arrange

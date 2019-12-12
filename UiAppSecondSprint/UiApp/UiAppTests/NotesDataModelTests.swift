@@ -33,15 +33,4 @@ class NotesDataModelTests: XCTestCase {
         XCTAssertTrue(cellsDataModel.hasData())
     }
     
-    func testThatNotesDataModelCanBeDecodedFromJson() {
-        // Arrange
-        var cellData: NotesDataModel.CellDataModel?
-        
-        // Act
-        cellData = NotesDataModel.CellDataModel.initFromJson()
-        
-        // Assert
-        XCTAssertNotNil(cellData)
-    }
-    
 }

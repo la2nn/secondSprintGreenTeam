@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0119D8EA23A1C24200029C92 /* TrelloNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0119D8E923A1C24200029C92 /* TrelloNetworkingTests.swift */; };
 		013AEE4C237F4E37002E8BA5 /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
 		013B362E2381A4A7007F0CEA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362D2381A4A7007F0CEA /* Extensions.swift */; };
 		013B36302381BDF0007F0CEA /* NoteInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */; };
@@ -48,7 +49,6 @@
 		01DDE5A3239698A700B3CF8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
 		01DDE5A4239698E100B3CF8A /* TrelloNetworking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */; };
 		01DDE5A523969B7300B3CF8A /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD862374B03D00E6B6EF /* RootViewController.swift */; };
-		01DDE5A72396B30A00B3CF8A /* TrelloNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DDE5A62396B30A00B3CF8A /* TrelloNetworkingTests.swift */; };
 		01DDE5A92396B66700B3CF8A /* ImagePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01DDE5A82396B66700B3CF8A /* ImagePickerTests.swift */; };
 		01DDE5AA2397950C00B3CF8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 950DBD8B2374B04200E6B6EF /* Assets.xcassets */; };
 		950DBD852374B03D00E6B6EF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950DBD842374B03D00E6B6EF /* AppDelegate.swift */; };
@@ -75,6 +75,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0119D8E923A1C24200029C92 /* TrelloNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworkingTests.swift; sourceTree = "<group>"; };
 		013AEE4B237F4E37002E8BA5 /* TrelloNetworking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworking.swift; sourceTree = "<group>"; };
 		013B362D2381A4A7007F0CEA /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		013B362F2381BDF0007F0CEA /* NoteInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteInfoViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +98,6 @@
 		01633DA5237B5F3400FEC3C3 /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		019E85EE238FF26300BEF412 /* UiAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UiAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		019E85F2238FF26300BEF412 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		01DDE5A62396B30A00B3CF8A /* TrelloNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrelloNetworkingTests.swift; sourceTree = "<group>"; };
 		01DDE5A82396B66700B3CF8A /* ImagePickerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerTests.swift; sourceTree = "<group>"; };
 		950DBD812374B03D00E6B6EF /* UiApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UiApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		950DBD842374B03D00E6B6EF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -199,8 +199,8 @@
 				014512172395A31C007CDE25 /* URLRequestExtesnsionTests.swift */,
 				014512192395AD40007CDE25 /* DoubleExtensionTests.swift */,
 				0145121B2395ADF5007CDE25 /* NoteCellTests.swift */,
-				01DDE5A62396B30A00B3CF8A /* TrelloNetworkingTests.swift */,
 				01DDE5A82396B66700B3CF8A /* ImagePickerTests.swift */,
+				0119D8E923A1C24200029C92 /* TrelloNetworkingTests.swift */,
 				019E85F2238FF26300BEF412 /* Info.plist */,
 			);
 			path = UiAppTests;
@@ -351,8 +351,8 @@
 				01451216239596E4007CDE25 /* TasksColumnCellTests.swift in Sources */,
 				0145121C2395ADF5007CDE25 /* NoteCellTests.swift in Sources */,
 				01DDE59D2396989C00B3CF8A /* SelfSizedTableView.swift in Sources */,
+				0119D8EA23A1C24200029C92 /* TrelloNetworkingTests.swift in Sources */,
 				01451210239590F8007CDE25 /* NotesViewControllerTests.swift in Sources */,
-				01DDE5A72396B30A00B3CF8A /* TrelloNetworkingTests.swift in Sources */,
 				01DDE5932396988800B3CF8A /* SignInViewController.swift in Sources */,
 				01DDE5A12396989C00B3CF8A /* TasksColumnCell.swift in Sources */,
 				019E85F9239007F900BEF412 /* CollectionViewDataModel.swift in Sources */,

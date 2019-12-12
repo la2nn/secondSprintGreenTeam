@@ -17,9 +17,14 @@ class URLRequestExtesnsionTests: XCTestCase {
 
         // Act
         try? request.setMultipartFormData(["Login" : "TestUser"], encoding: .utf8)
-
+        let dataString = String(data: request.httpBody ?? Data(), encoding: .utf8)
+        
         // Assert
-        XCTAssertNotNil(request.httpBody)
+        if let dataString = dataString {
+            XCTAssertTrue(dataString.contains("TestUser"))
+        } else {
+            XCTFail()
+        }
     }
-    
+
 }
